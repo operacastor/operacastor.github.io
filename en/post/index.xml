@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Operacastor Blog</title>
+        <link>https://operacastor.github.io/en/post/</link>
+        <description>Recent content in Posts on Operacastor Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>id-id</language>
+        <lastBuildDate>Fri, 11 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/en/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Sample</title>
+        <link>https://operacastor.github.io/en/p/sample/</link>
+        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/en/p/sample/</guid>
+        <description>&lt;h1 id=&#34;sample&#34;&gt;Sample&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

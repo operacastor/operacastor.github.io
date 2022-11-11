@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Operacastor Blog</title>
+        <link>https://operacastor.github.io/en/</link>
+        <description>Recent content on Operacastor Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>id-id</language>
+        <lastBuildDate>Fri, 11 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About</title>
+        <link>https://operacastor.github.io/en/about/</link>
+        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/en/about/</guid>
+        <description>&lt;p&gt;Hello, my name is Operacastor and welcome to my blog.
+This blog was created for various purposes, the first is as a place to document the output of my learning in the field of cybersecurity.
+Second, I also use this blog as my digital portfolio.
+Third, this blog is made for those of you who might want to learn more about cybersecurity.&lt;/p&gt;
+&lt;p&gt;I am a random person, so it is very predictable that all posts on this blog will also seem random.
+For friends who want to find my writings on a specific topic, then you should know that this blog has a search bar located on the &lt;strong&gt;Home&lt;/strong&gt; page.
+So you can immediately search for posts that match what you are looking for.&lt;/p&gt;
+&lt;p&gt;This blog is available in two languages, namely Bahasa Indonesia and English.
+To change the language, you can select one of the language options at the bottom of the sidebar.
+For those of you who use Bahasa Indonesia, there are some words in English that I didn&amp;rsquo;t translate into Bahasa Indonesia just to avoid confusion.&lt;/p&gt;
+&lt;p&gt;So this is a brief explanation of this blog, hopefully this blog will be useful for all of us. That&amp;rsquo;s it, thank you!&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>https://operacastor.github.io/en/archives/</link>
+        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/en/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Sample</title>
+        <link>https://operacastor.github.io/en/p/sample/</link>
+        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/en/p/sample/</guid>
+        <description>&lt;h1 id=&#34;sample&#34;&gt;Sample&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://operacastor.github.io/en/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/en/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
