@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Operacastor Blog</title>
-        <link>https://operacastor.github.io/</link>
-        <description>Recent content on Operacastor Blog</description>
+        <title>Tutorial on Operacastor Blog</title>
+        <link>https://operacastor.github.io/categories/tutorial/</link>
+        <description>Recent content in Tutorial on Operacastor Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>id-id</language>
-        <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/categories/tutorial/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Membuat Blog dengan Hugo dan GitHub Pages</title>
         <link>https://operacastor.github.io/p/membuat-blog-dengan-hugo-dan-github-pages/</link>
         <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
@@ -661,48 +661,6 @@ Jika terdapat error, maka teman-teman dapat melihatnya di terminal saat menjalan
 &lt;li&gt;Setelah itu save seluruh file yang telah di-update, lalu generate hasil update ke directory &lt;strong&gt;production&lt;/strong&gt; dengan command &lt;code&gt;cd ~/blog &amp;amp;&amp;amp; hugo -D -d production&lt;/code&gt;, melakukan commit dan push ke remote repository &lt;strong&gt;&amp;lt;username-github&amp;gt;.github.io&lt;/strong&gt; dengan command &lt;code&gt;cd ~/blog/production &amp;amp;&amp;amp; git add -A &amp;amp;&amp;amp; git commit -m &amp;quot;Production Commit&amp;quot; &amp;amp;&amp;amp; git push origin main&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-        </item>
-        <item>
-        <title>About</title>
-        <link>https://operacastor.github.io/about/</link>
-        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://operacastor.github.io/about/</guid>
-        <description>&lt;p&gt;Halo, nama saya Operacastor dan selamat datang di blog saya.
-Blog ini dibuat untuk berbagai macam keperluan, yang pertama adalah sebagai tempat untuk mendokumentasikan hasil-hasil pembelajaran saya di bidang keamanan siber.
-Kedua, saya juga menggunakan blog ini sebagai portofolio digital saya.
-Ketiga, blog ini dibuat untuk kalian yang mungkin ingin belajar lebih tentang keamanan siber.&lt;/p&gt;
-&lt;p&gt;Saya termasuk orang yang random, sehingga sangat dapat diprediksi bahwa semua post pada blog ini juga akan terkesan random.
-Untuk teman-teman yang ingin mencari tulisan saya mengenai suatu topik yang spesifik, maka kalian harus mengetahui bahwasannya blog ini memiliki search bar  yang terletak pada halaman &lt;strong&gt;Home&lt;/strong&gt;.
-Sehingga kalian dapat langsung mencari post yang sesuai dengan yang kalian cari.&lt;/p&gt;
-&lt;p&gt;Blog ini tersedia dalam dua bahasa, yaitu Bahasa Indonesia dan English.
-Untuk mengganti bahasa, kalian dapat memilih salah satu opsi bahasa pada bagian bawah sidebar.
-Untuk kalian yang menggunakan Bahasa Indonesia, terdapat beberapa kata dalam Bahasa Inggris yang tidak saya terjemahkan ke dalam Bahasa Indonesia hanya untuk menghindari kebingungan semata.&lt;/p&gt;
-&lt;p&gt;Demikian penjelasan singkat tentang blog ini, semoga blog ini akan bermanfaat bagi kita semua.
-That&amp;rsquo;s it, thank you!&lt;/p&gt;
-&lt;p&gt;Special thanks to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://unsplash.com/@markuswinkler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Markus Winkler&lt;/a&gt; for &amp;ldquo;Tutorial&amp;rdquo; category cover image via &lt;a class=&#34;link&#34; href=&#34;https://unsplash.com/photos/HpWwEURimK8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Unsplash&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>Archives</title>
-        <link>https://operacastor.github.io/archives/</link>
-        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://operacastor.github.io/archives/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Search</title>
-        <link>https://operacastor.github.io/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://operacastor.github.io/search/</guid>
-        <description></description>
         </item>
         
     </channel>

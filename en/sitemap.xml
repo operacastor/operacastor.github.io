@@ -41,19 +41,6 @@
                 href="https://operacastor.github.io/en/archives/"
                 />
   </url><url>
-    <loc>https://operacastor.github.io/en/categories/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/categories/"
-                />
-  </url><url>
     <loc>https://operacastor.github.io/en/page/</loc>
     <lastmod>2022-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -67,69 +54,16 @@
                 href="https://operacastor.github.io/en/page/"
                 />
   </url><url>
-    <loc>https://operacastor.github.io/en/post/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
+    <loc>https://operacastor.github.io/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="id"
-                href="https://operacastor.github.io/post/"
+                href="https://operacastor.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://operacastor.github.io/en/post/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/en/tags/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/tags/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/tags/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/en/categories/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/categories/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/categories/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/en/p/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/p/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/p/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/en/tags/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/tags/"
+                href="https://operacastor.github.io/en/categories/"
                 />
   </url><url>
     <loc>https://operacastor.github.io/en/search/</loc>
@@ -142,6 +76,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://operacastor.github.io/en/search/"
+                />
+  </url><url>
+    <loc>https://operacastor.github.io/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://operacastor.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://operacastor.github.io/en/tags/"
                 />
   </url>
 </urlset>

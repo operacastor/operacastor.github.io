@@ -6,13 +6,13 @@
         <description>Recent content in Categories on Operacastor Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>id-id</language>
-        <lastBuildDate>Fri, 11 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Sample</title>
-        <link>https://operacastor.github.io/categories/sample/</link>
-        <pubDate>Fri, 11 Nov 2022 00:00:00 +0000</pubDate>
+        <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Tutorial</title>
+        <link>https://operacastor.github.io/categories/tutorial/</link>
+        <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://operacastor.github.io/categories/sample/</guid>
-        <description></description>
+        <guid>https://operacastor.github.io/categories/tutorial/</guid>
+        <description>&lt;img src="https://operacastor.github.io/categories/tutorial/tutorial-cover.png" alt="Featured image of post Tutorial" /&gt;</description>
         </item>
         
     </channel>

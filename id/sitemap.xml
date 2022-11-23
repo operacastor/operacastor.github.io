@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://operacastor.github.io/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,50 @@
                 hreflang="id"
                 href="https://operacastor.github.io/"
                 />
+  </url><url>
+    <loc>https://operacastor.github.io/tags/blog/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://operacastor.github.io/categories/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://operacastor.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://operacastor.github.io/categories/"
+                />
+  </url><url>
+    <loc>https://operacastor.github.io/tags/github/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://operacastor.github.io/tags/hugo/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://operacastor.github.io/p/membuat-blog-dengan-hugo-dan-github-pages/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://operacastor.github.io/post/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://operacastor.github.io/tags/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://operacastor.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="id"
+                href="https://operacastor.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://operacastor.github.io/categories/tutorial/</loc>
+    <lastmod>2022-11-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://operacastor.github.io/about/</loc>
     <lastmod>2022-11-11T00:00:00+00:00</lastmod>
@@ -41,19 +85,6 @@
                 href="https://operacastor.github.io/archives/"
                 />
   </url><url>
-    <loc>https://operacastor.github.io/categories/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/categories/"
-                />
-  </url><url>
     <loc>https://operacastor.github.io/page/</loc>
     <lastmod>2022-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -65,71 +96,6 @@
                 rel="alternate"
                 hreflang="id"
                 href="https://operacastor.github.io/page/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/post/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/post/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/tags/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/tags/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/tags/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/categories/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/categories/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/categories/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/p/sample/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/p/sample/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/p/sample/"
-                />
-  </url><url>
-    <loc>https://operacastor.github.io/tags/</loc>
-    <lastmod>2022-11-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://operacastor.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="id"
-                href="https://operacastor.github.io/tags/"
                 />
   </url><url>
     <loc>https://operacastor.github.io/search/</loc>
