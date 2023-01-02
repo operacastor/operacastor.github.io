@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="id-id" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Windows Domain Windows Domain adalah sebuah jaringan khusus yang berisi users dan computers yang diatur oleh pengelola atau admin dalam suatu organisasi. Organisasi yang dimaksud dapat berupa perusahaan, layanan masyarakat, sekolah atau perguruan tinggi, perbankan dll. Windows Domain berguna untuk mensentralisasikan administrasi dari objek-objek yang dimiliki suatu jaringan komputer Windows dalam sebuah repository bernama Active Directory (AD). Server yang menjalankan service Active Directory disebut dengan Domain Controller (DC).
+Kelebihan yang didapatkan dengan menggunakan Windows Domain dan Active Directory adalah:'>
+<title>Active Directory</title>
+
+<link rel='canonical' href='https://operacastor.github.io/p/active-directory/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Active Directory'>
+<meta property='og:description' content='Windows Domain Windows Domain adalah sebuah jaringan khusus yang berisi users dan computers yang diatur oleh pengelola atau admin dalam suatu organisasi. Organisasi yang dimaksud dapat berupa perusahaan, layanan masyarakat, sekolah atau perguruan tinggi, perbankan dll. Windows Domain berguna untuk mensentralisasikan administrasi dari objek-objek yang dimiliki suatu jaringan komputer Windows dalam sebuah repository bernama Active Directory (AD). Server yang menjalankan service Active Directory disebut dengan Domain Controller (DC).
+Kelebihan yang didapatkan dengan menggunakan Windows Domain dan Active Directory adalah:'>
+<meta property='og:url' content='https://operacastor.github.io/p/active-directory/'>
+<meta property='og:site_name' content='Operacastor Blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='active directory' /><meta property='article:tag' content='ad' /><meta property='article:tag' content='dc' /><meta property='article:tag' content='domain controller' /><meta property='article:tag' content='delegation' /><meta property='article:tag' content='gpo' /><meta property='article:tag' content='ou' /><meta property='article:tag' content='pentest' /><meta property='article:tag' content='windows' /><meta property='article:published_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-01-02T00:00:00&#43;00:00'/><meta property='og:image' content='https://operacastor.github.io/p/active-directory/cover-002.png' />
+<meta name="twitter:title" content="Active Directory">
+<meta name="twitter:description" content="Windows Domain Windows Domain adalah sebuah jaringan khusus yang berisi users dan computers yang diatur oleh pengelola atau admin dalam suatu organisasi. Organisasi yang dimaksud dapat berupa perusahaan, layanan masyarakat, sekolah atau perguruan tinggi, perbankan dll. Windows Domain berguna untuk mensentralisasikan administrasi dari objek-objek yang dimiliki suatu jaringan komputer Windows dalam sebuah repository bernama Active Directory (AD). Server yang menjalankan service Active Directory disebut dengan Domain Controller (DC).
+Kelebihan yang didapatkan dengan menggunakan Windows Domain dan Active Directory adalah:"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://operacastor.github.io/p/active-directory/cover-002.png' />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Tampilkan Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Operacastor Blog</a></h1>
+            <h2 class="site-description">Welcome to my INFOSEC blog</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/operacastor'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/operacastor'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://operacastor.github.io/" selected>Bahasa Indonesia</option>
+                        
+                            <option value="https://operacastor.github.io/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Mode Gelap</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Daftar Isi</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#windows-domain">Windows Domain</a>
+      <ul>
+        <li><a href="#active-directory-login-via-rdp">Active Directory Login via RDP</a></li>
+      </ul>
+    </li>
+    <li><a href="#active-directory">Active Directory</a>
+      <ul>
+        <li><a href="#ad-objects">AD Objects</a>
+          <ul>
+            <li><a href="#users">Users</a></li>
+            <li><a href="#machines">Machines</a></li>
+            <li><a href="#security-groups">Security Groups</a></li>
+          </ul>
+        </li>
+        <li><a href="#active-directory-users-and-computers">Active Directory Users and Computers</a>
+          <ul>
+            <li><a href="#default-containers">Default Containers</a></li>
+            <li><a href="#ou-members">OU Members</a></li>
+            <li><a href="#add-ou">Add OU</a></li>
+            <li><a href="#delete-ou">Delete OU</a></li>
+          </ul>
+        </li>
+        <li><a href="#security-groups-vs-ous">Security Groups vs OUs</a></li>
+      </ul>
+    </li>
+    <li><a href="#ad-management">AD Management</a>
+      <ul>
+        <li><a href="#ad-users">AD Users</a>
+          <ul>
+            <li><a href="#add-user">Add User</a></li>
+            <li><a href="#delete-user">Delete User</a></li>
+            <li><a href="#delegation">Delegation</a></li>
+          </ul>
+        </li>
+        <li><a href="#ad-computers">AD Computers</a>
+          <ul>
+            <li><a href="#group-computers">Group Computers</a></li>
+          </ul>
+        </li>
+        <li><a href="#group-policy-object-gpo">Group Policy Object (GPO)</a>
+          <ul>
+            <li><a href="#group-policy-management">Group Policy Management</a></li>
+            <li><a href="#create-user-configurations-gpo">Create User Configurations GPO</a></li>
+            <li><a href="#create-computer-configurations-gpo">Create Computer Configurations GPO</a></li>
+            <li><a href="#edit-gpo">Edit GPO</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/active-directory/">
+                <img src="/p/active-directory/cover-002_hu742f0300617558535cdebe2e3b26fa43_125865_800x0_resize_box_3.png"
+                        srcset="/p/active-directory/cover-002_hu742f0300617558535cdebe2e3b26fa43_125865_800x0_resize_box_3.png 800w, /p/active-directory/cover-002_hu742f0300617558535cdebe2e3b26fa43_125865_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post Active Directory" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/pentest/" style="background-color: #ff0000; color: #fff;">
+                Pentest
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/active-directory/">Active Directory</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 02, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    Waktu Membaca: 13 menit
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="windows-domain">Windows Domain</h1>
+<p>Windows Domain adalah sebuah jaringan khusus yang berisi users dan computers yang diatur oleh pengelola atau admin dalam suatu organisasi.
+Organisasi yang dimaksud dapat berupa perusahaan, layanan masyarakat, sekolah atau perguruan tinggi, perbankan dll.
+Windows Domain berguna untuk mensentralisasikan administrasi dari objek-objek yang dimiliki suatu jaringan komputer Windows dalam sebuah repository bernama <strong>Active Directory (AD)</strong>.
+Server yang menjalankan service Active Directory disebut dengan <strong>Domain Controller (DC)</strong>.</p>
+<p>Kelebihan yang didapatkan dengan menggunakan Windows Domain dan Active Directory adalah:</p>
+<ul>
+<li><strong>Identity Management yang Tersentralisasi</strong>: Seluruh users dalam suatu jaringan dapat dikonfigurasikan dengan mudah menggunakan AD.</li>
+<li><strong>Memudahkan pengelolaan Security Policies</strong>: Kita dapat melakukan konfigurasi security policies secara langsung dari Active Directory dan mengaplikasikannya ke users dan computers dalam suatu jaringan AD.</li>
+</ul>
+<h2 id="active-directory-login-via-rdp">Active Directory Login via RDP</h2>
+<p>Untuk terhubung via RDP dengan user dan computer yang tergabung dalam AD, kita dapat meggunakan (contoh) command <code>xfreerdp /u:THM\Administrator /p:Password321 /v:10.10.108.177 /cert:ignore</code>.
+Perlu diperhatikan bahwa <code>/u:THM\Administrator</code> mengindikasikan bahwa kita ingin terhubung sebagai <code>Administrator</code> pada domain <code>THM</code> sedangkan <code>/p:Password321</code> adalah user password dan <code>/v:10.10.108.177</code> merupakan IP dari computer yang tergabung dalam domain yang dituju:</p>
+<p><img src="/p/active-directory/Administrator_Login.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Administrator_Login_hu954351c3528c6a5be092504b8c5dafc5_151530_480x0_resize_box_3.png 480w, /p/active-directory/Administrator_Login_hu954351c3528c6a5be092504b8c5dafc5_151530_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Administrator Login"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h1 id="active-directory">Active Directory</h1>
+<p>Inti dari Windows Domain adalah <strong>Active Directory Domain Service (AD DS)</strong>.
+Service ini seperti suatu katalog yang menyimpan semua informasi dari “Objects” yang terdapat pada jaringan AD itu sendiri.
+Object merupakan entitas yang mewakili resources yang terdapat pada jaringan AD.</p>
+<h2 id="ad-objects">AD Objects</h2>
+<h3 id="users">Users</h3>
+<p>Users merupakan salah satu objek <strong>security principals</strong>, yang berarti bahwa mereka dapat melakukan autentikasi pada domain dan dapat diberikan <strong>privileges</strong> pada <strong>resources</strong> seperti files atau printers.
+<strong>Security principals</strong> adalah objek yang dapat melakukan tindakan-tindakan pada resources dalam suatu jaringan.</p>
+<p>Users dapat direpresentasikan kedalam dua entitas:</p>
+<ul>
+<li><strong>People</strong>: Users dapat direpresentasikan sebagai seseorang dalam suatu organisasi yang membutuhkan akses ke jaringan, seperti pegawai atau karyawan suatu kantor.</li>
+<li><strong>Services</strong>: Users juga dapat direpresentasikan sebagai services seperti IIS atau MSSQL.
+Setiap service membutuhkan sebuah user untuk dapat berjalan, tetapi service users berbeda dengan regular users karena service users hanya memiliki privileges yang dibutuhkan untuk menjalankan suatu service.</li>
+</ul>
+<h3 id="machines">Machines</h3>
+<p>Setiap komputer yang tergabung dalam domain AD, akan direpresentasikan sebagai <strong>machines</strong> object.
+Machines juga dapat dikatakan sebagai “security principals” dan diberikan sebuah akun seperti regular user.
+Akun ini diberikan hak terbatas dalam domain tersebut.</p>
+<p>Machine accounts itu sendiri merupakan local administrator pada suatu komputer fisik, machine accounts tidak seharusnya dapat diakses oleh orang lain kecuali komputer itu sendiri.
+Namun, jika kita mengetahui passwordnya maka kita tetap dapat melakukan login.</p>
+<blockquote>
+<p>💡 <strong>NOTE</strong>: Password yang dimiliki Machine Accounts akan secara otomatis melakukan rotasi dan biasanya password ini berupa 120 karakter random.</p>
+</blockquote>
+<p>Mengidentifikasi machine account cenderung lebih mudah karena memiliki penamaan yang khusus.
+Machine account name adalah nama komputer ditambah dengan sebuah dollar sign <code>$</code>.
+Contohnya, sebuah komputer dengan nama <code>DC01</code> akan memiliki machine account dengan nama <code>DC01$</code>.</p>
+<h3 id="security-groups">Security Groups</h3>
+<p>Pada Windows kita dapat membuat sebuah <strong>user groups</strong> yang memiliki akses ke resources yang tersedia, dibandingkan dengan memberikan akses ke user yang dipilih satu persatu.
+Ini dapat mempermudah pengelolaan karena kita dapat menambahkan suatu user ke suatu grup dan user tersebut akan mendapat privileges yang sama dengan anggota satu grupnya.
+Security Groups juga termasuk sebagai security principals karena memiliki privileges terhadap resources yang tersedia.</p>
+<p>Groups dapat beranggotakan baik users maupun machines.
+Jika diperlukan, groups juga dapat beranggotakan group lainnya.</p>
+<p>Beberapa groups dibuat secara default dalam suatu domain yang dapat digunakan untuk memberikan privileges yang spesifik kepada users.
+Sebagai contoh, berikut beberapa groups penting yang terdapat dalam suatu domain:</p>
+<ul>
+<li><strong>Domain Admins</strong>: Memiliki privileges terhadap keseluruhan domain.
+Secara default, domain admins dapat mengelola seluruh komputer dalam suatu domain, termasuk Domain Controllers.</li>
+<li><strong>Server Operators</strong>: Memiliki privileges untuk mengelola Domain Controllers.
+Mereka tidak dapat mengubah pengelolaan group membership apapun.</li>
+<li><strong>Backup Operators</strong>: Memiliki privileges untuk mengelola file apapun dengan mengabaikan permission-nya.
+Mereka ditugaskan untuk melakukan backup data pada computers.</li>
+<li><strong>Account Operators</strong>: Memiliki privileges untuk membuat dan memodifikasi akun lainnya dalam domain.</li>
+<li><strong>Domain Users</strong>: Seluruh user accounts dalam domain.</li>
+<li><strong>Domain Computers</strong>: Seluruh computers dalam domain.</li>
+<li><strong>Domain Controllers</strong>: Seluruh Domain Controller dalam domain.</li>
+</ul>
+<p><a class="link" href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups"  target="_blank" rel="noopener"
+    >Active Directory security groups</a></p>
+<h2 id="active-directory-users-and-computers">Active Directory Users and Computers</h2>
+<p>Untuk mengelola users, groups maupun machines dalam AD, kita dapat login ke Domain Controller dan menjalankan <strong>Active Directory Users and Computers</strong> dari start menu:</p>
+<p><img src="/p/active-directory/Active_Directory_Users_and_Computers.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Active_Directory_Users_and_Computers_hu6622b386a9d09e9ad8004074142b9157_173559_480x0_resize_box_3.png 480w, /p/active-directory/Active_Directory_Users_and_Computers_hu6622b386a9d09e9ad8004074142b9157_173559_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Active Directory Users and Computers"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Ini akan membuka sebuah window di mana kita dapat melihat hierarki dari users, computers dan groups yang terdapat dalam domain.
+Biasanya object tergabung dalam <strong>Organizational Units (OUs)</strong> yang merupakan sebuah container untuk mengelompokkan users dan machines.
+OU biasanya digunakan untuk mendefinisikan sejumlah users dengan policy yang sama.
+Adapun policy adalah suatu konfigurasi yang dapat diaplikasikan pada objects.
+Contohnya adalah terdapat policy yang digunakan untuk mengatur jumlah karakter minimum password users.
+OU mempermudah policy untuk dapat diaplikasikan ke kelompok yang spesifik, seperti pegawai Sales department mungkin diberikan policy yang berbeda dengan pegawai IT department.</p>
+<blockquote>
+<p>💡 <strong>NOTE</strong>: Sebuah user hanya dapat menjadi bagian dari satu buah OU pada satu waktu karena mengaplikasikan 2 atau lebih sekumpulan policies ke suatu user dapat berpotensi mengakibatkan tumpang tindih policies, namun satu atau lebih OU dapat menjadi anggota dari OU lainnya (parent and child OUs).</p>
+</blockquote>
+<p>Pada contoh berikut, terdapat suatu OU bernama <strong>THM</strong> yang memiliki 5 child OUs yaitu <strong>IT</strong>, <strong>Management</strong>, <strong>Marketing</strong>, <strong>Research and Development</strong> dan <strong>Sales</strong>.
+OU biasanya direpresentasikan sesuai dengan struktur bisnis karena biasanya dibutuhkan policies yang berbeda untuk tiap department:</p>
+<p><img src="/p/active-directory/Organizational_Units.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Organizational_Units_hu0472cfa2737e8564b1c9043ddbf4173a_269278_480x0_resize_box_3.png 480w, /p/active-directory/Organizational_Units_hu0472cfa2737e8564b1c9043ddbf4173a_269278_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Organizational Units"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="default-containers">Default Containers</h3>
+<p>Terdapat beberapa builtin containers yang dimiliki oleh suatu Domain, beberapa di antaranya adalah:</p>
+<ul>
+<li><strong>Builtin</strong>: Berisi default groups yang tersedia untuk Windows host apapun.</li>
+<li><strong>Computers</strong>: Machine apapun yang tergabung dalam domain.</li>
+<li><strong>Domain Controllers</strong>: OU default yang berisi Domain Controllers yang tergabung dalam domain.</li>
+<li><strong>Users</strong>: Users default dan groups yang tergabung dalam domain.</li>
+<li><strong>ForeignSecurityPrincipals</strong>: Security principals, yang dibuat ketika object (users, computers, atau groups) ditambahkan ke beberapa domain group, tetapi berasal dari trusted external domains.</li>
+<li><strong>Managed Service Accounts</strong>: Service accounts yang tergabung dalam domain.</li>
+</ul>
+<p><img src="/p/active-directory/Default_Containers.png"
+	width="1858"
+	height="520"
+	srcset="/p/active-directory/Default_Containers_hu16ce7dd646e4178209f621e384e955ed_204492_480x0_resize_box_3.png 480w, /p/active-directory/Default_Containers_hu16ce7dd646e4178209f621e384e955ed_204492_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Default Containers"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="357"
+		data-flex-basis="857px"
+	
+></p>
+<h3 id="ou-members">OU Members</h3>
+<p>Jika kita memilih suatu OU, maka akan muncul list nama dan tipe dari member yang dimiliki OU tersebut, seperti contohnya OU <strong>IT</strong> memiliki 3 users dengan nama <strong>Claire</strong>, <strong>Mary</strong> dan <strong>Phillip</strong>:</p>
+<p><img src="/p/active-directory/Member_OU.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Member_OU_hu94eefb61a587131f1b68fe43bcf4aa41_216712_480x0_resize_box_3.png 480w, /p/active-directory/Member_OU_hu94eefb61a587131f1b68fe43bcf4aa41_216712_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Member OU"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="add-ou">Add OU</h3>
+<p>Untuk menambahkan OU, right-click parent object, pilih <strong>New</strong> lalu pilih <strong>Organizational Unit</strong>:</p>
+<p><img src="/p/active-directory/Add_OU.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Add_OU_hu2a44bcb3b44534f6f9a91c19f1842115_321795_480x0_resize_box_3.png 480w, /p/active-directory/Add_OU_hu2a44bcb3b44534f6f9a91c19f1842115_321795_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add OU"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Kemudian masukkan nama OU yang ingin dibuat lalu pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_2.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<h3 id="delete-ou">Delete OU</h3>
+<p>Untuk menghapus OU, pertama kita harus meng-enable <strong>Advanced Features</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Delete_OU_-_1_huaac5398166a78cf61bcf1b6e2eeee2b3_257776_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_1_huaac5398166a78cf61bcf1b6e2eeee2b3_257776_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Lalu memilih OU yang akan dihapus, right-click dan pilih <strong>Properties</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_2.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Delete_OU_-_2_huf13edd1ded9f65484543ae8bc87e4742_415421_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_2_huf13edd1ded9f65484543ae8bc87e4742_415421_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Selanjutnya matikan opsi <strong>Protect object from accidental deletion</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_3.png"
+	width="718"
+	height="816"
+	srcset="/p/active-directory/Delete_OU_-_3_hu50fd7086255974e3748ed93a27bd351e_101451_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_3_hu50fd7086255974e3748ed93a27bd351e_101451_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="87"
+		data-flex-basis="211px"
+	
+></p>
+<p>Lalu pilih <strong>Apply</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_4.png"
+	width="718"
+	height="816"
+	srcset="/p/active-directory/Delete_OU_-_4_hu92b3879928ffb778ee3b317ec70b61cd_101064_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_4_hu92b3879928ffb778ee3b317ec70b61cd_101064_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="87"
+		data-flex-basis="211px"
+	
+></p>
+<p>Setelah itu right-click OU yang ingin dihapus, kemudian pilih <strong>Delete</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_5.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Delete_OU_-_5_hu7244814032289a20174af23ab392ca75_253280_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_5_hu7244814032289a20174af23ab392ca75_253280_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Terakhir, pilih <strong>Yes</strong>:</p>
+<p><img src="/p/active-directory/Delete_OU_-_6.png"
+	width="690"
+	height="272"
+	srcset="/p/active-directory/Delete_OU_-_6_hu7d279fca123d27a5cd1155e5a8ab071c_33433_480x0_resize_box_3.png 480w, /p/active-directory/Delete_OU_-_6_hu7d279fca123d27a5cd1155e5a8ab071c_33433_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete OU - 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="253"
+		data-flex-basis="608px"
+	
+></p>
+<h2 id="security-groups-vs-ous">Security Groups vs OUs</h2>
+<ul>
+<li><strong>OUs</strong> biasa digunakan untuk <strong>mengaplikasikan policies dan konfigurasi spesifik</strong> ke users dan computers sesuai pada role mereka masing-masing.
+Satu user hanya dapat tergabung ke dalam satu OU karena tidak masuk akal untuk mengaplikasikan 2 atau lebih policies sets ke suatu user (berpotensi tumpang tindih).</li>
+<li><strong>Security Groups</strong> biasa digunakan untuk <strong>memberikan permission terhadap resources</strong>.
+Contohnya, kita dapat menggunakan groups untuk mengizinkan beberapa users untuk dapat mengakses shared folder pada network printer.
+Sebuah user dapat tergabung dalam beberapa groups, yang mungkin membutuhkan akses ke beberapa resources.</li>
+</ul>
+<h1 id="ad-management">AD Management</h1>
+<h2 id="ad-users">AD Users</h2>
+<h3 id="add-user">Add User</h3>
+<p>Berikut contoh untuk menambahkan user pada OU <strong>Sales</strong>.
+Right-click pada OU yang diinginkan, lalu pilih <strong>New</strong> dan pilih <strong>User</strong>:</p>
+<p><img src="/p/active-directory/Add_User_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Add_User_-_1_hu6f0a4139c955813b1345b93f3de3c733_360089_480x0_resize_box_3.png 480w, /p/active-directory/Add_User_-_1_hu6f0a4139c955813b1345b93f3de3c733_360089_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add User - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Setelah itu isi user detail lalu pilih <strong>Next</strong>:</p>
+<p><img src="/p/active-directory/Add_User_-_2.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Add_User_-_2_hu2779a0f60955f9516161872ce8d99507_75422_480x0_resize_box_3.png 480w, /p/active-directory/Add_User_-_2_hu2779a0f60955f9516161872ce8d99507_75422_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add User - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p>Lalu masukkan password dan confirm password, kemudian pilih <strong>Next</strong>:</p>
+<p><img src="/p/active-directory/Add_User_-_3.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Add_User_-_3_hub64c664ded2112dab7154867d069e863_80638_480x0_resize_box_3.png 480w, /p/active-directory/Add_User_-_3_hub64c664ded2112dab7154867d069e863_80638_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add User - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p>Jika dirasa sudah sesuai, pilih tombol <strong>Finish</strong>:</p>
+<p><img src="/p/active-directory/Add_User_-_4.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Add_User_-_4_hu52bdf98fdf1af5c30e7c69cea047fd64_75796_480x0_resize_box_3.png 480w, /p/active-directory/Add_User_-_4_hu52bdf98fdf1af5c30e7c69cea047fd64_75796_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add User - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p>Kemudian cek bahwa user baru telah berhasil ditambahkan ke OU:</p>
+<p><img src="/p/active-directory/Add_User_-_5.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Add_User_-_5_huee528e4b925fe54d2582c5c213c13781_236830_480x0_resize_box_3.png 480w, /p/active-directory/Add_User_-_5_huee528e4b925fe54d2582c5c213c13781_236830_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Add User - 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="delete-user">Delete User</h3>
+<p>Right-click pada user yang ingin dihapus, lalu pilih <strong>Delete</strong>:</p>
+<p><img src="/p/active-directory/Delete_User_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Delete_User_-_1_hu9569968c47348d2212e269f9c3037cc5_277710_480x0_resize_box_3.png 480w, /p/active-directory/Delete_User_-_1_hu9569968c47348d2212e269f9c3037cc5_277710_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete User - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Kemudian pilih <strong>Yes</strong> untuk menghapus user:</p>
+<p><img src="/p/active-directory/Delete_User_-_2.png"
+	width="674"
+	height="272"
+	srcset="/p/active-directory/Delete_User_-_2_hu1ecb4a41375ea90e96af397143927fe0_29166_480x0_resize_box_3.png 480w, /p/active-directory/Delete_User_-_2_hu1ecb4a41375ea90e96af397143927fe0_29166_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delete User - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="247"
+		data-flex-basis="594px"
+	
+></p>
+<h3 id="delegation">Delegation</h3>
+<p>Delegation adalah sebuah proses untuk memberikan specific privileges ke user(s) untuk dapat melakukan advanced tasks terhadap OUs tanpa membutuhkan campur tangan Domain Administrator.</p>
+<p>Contohnya memberikan privileges kepada OU <strong>IT Support</strong> untuk dapat melakukan password reset ke low-privileged users atau OU lainnya.</p>
+<p>Pada contoh berikut, <strong>Phillip</strong> yang tergabung dalam OU <strong>IT</strong> akan didelegasikan kontrol untuk melakukan <strong>password reset</strong> terhadap OU <strong>Sales:</strong></p>
+<p>Right-click pada OU yang dituju yaitu OU <strong>Sales</strong>, lalu pilih <strong>Delegate Control</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Delegation_-_1_hued9e687d44bdd4e7de894d2ab8dc4205_301277_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_1_hued9e687d44bdd4e7de894d2ab8dc4205_301277_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Lalu pilih <strong>Next</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_2.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_2_hu8f9b7f1155feee67862eb57d958bb9e0_112336_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_2_hu8f9b7f1155feee67862eb57d958bb9e0_112336_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Pilih <strong>Add:</strong></p>
+<p><img src="/p/active-directory/Delegation_-_3.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_3_hu0c9f35fbb951089a1658451e1c9bdf75_67070_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_3_hu0c9f35fbb951089a1658451e1c9bdf75_67070_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Pada <strong>Enter the object names to select</strong>, ketikkan nama <strong>Phillip</strong> lalu pilih <strong>Check Names</strong> agar nama yang kita masukkan merupakan nama yang valid:</p>
+<p><img src="/p/active-directory/Delegation_-_4.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_4_hu3f76ccf18db725b2e117b77c9f624e4f_93198_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_4_hu3f76ccf18db725b2e117b77c9f624e4f_93198_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Hal ini juga akan melakukan auto complete pada nama yang dimasukkan.
+Jika sudah sesuai, pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_5.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_5_hu3f76ccf18db725b2e117b77c9f624e4f_96698_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_5_hu3f76ccf18db725b2e117b77c9f624e4f_96698_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Pilih <strong>Next</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_6.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_6_hu3122df443e4d46c97b4207fe645fe1ed_74957_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_6_hu3122df443e4d46c97b4207fe645fe1ed_74957_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Lalu pilih kontrol yang akan di delegasikan ke <strong>Phillip</strong>, yaitu kontrol <strong>Reset user passwords and force password change at next logon</strong>, lalu pilih <strong>Next</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_7.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_7_hua5d21647a37a8143472064f83b03c2d2_125703_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_7_hua5d21647a37a8143472064f83b03c2d2_125703_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 7"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Terakhir, cek seluruh settings dan pilih <strong>Finish</strong>:</p>
+<p><img src="/p/active-directory/Delegation_-_8.png"
+	width="894"
+	height="702"
+	srcset="/p/active-directory/Delegation_-_8_hu80a1b342be02b0472780fb08a5cad215_134495_480x0_resize_box_3.png 480w, /p/active-directory/Delegation_-_8_hu80a1b342be02b0472780fb08a5cad215_134495_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Delegation - 8"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="127"
+		data-flex-basis="305px"
+	
+></p>
+<p>Untuk memeriksa apakah kontrol sudah didelegasikan kita akan login RDP sebagai Phillip dengan command <code>xfreerdp /u:THM\phillip /p:Claire2008 /v:10.10.108.177 /cert:ignore</code>:</p>
+<p><img src="/p/active-directory/phillip_Login.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/phillip_Login_hu4fd5db62e95e0a7312ddc4c2fef32501_149149_480x0_resize_box_3.png 480w, /p/active-directory/phillip_Login_hu4fd5db62e95e0a7312ddc4c2fef32501_149149_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="phillip Login"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Logged in sebagai phillip:</p>
+<p><img src="/p/active-directory/Phillip_Login_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Phillip_Login_-_1_hu765472b641a5aabfa3eaf998f42ae71f_660131_480x0_resize_box_3.png 480w, /p/active-directory/Phillip_Login_-_1_hu765472b641a5aabfa3eaf998f42ae71f_660131_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Phillip Login - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Karena <strong>Phillip</strong> tidak dapat membuka <strong>Active Directory Users and Computers</strong>, maka kita harus menggunakan PowerShell:</p>
+<p><img src="/p/active-directory/Phillip_Login_-_2.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Phillip_Login_-_2_hu1d6d0c029b95a81a38dc0ce8f95c5752_474284_480x0_resize_box_3.png 480w, /p/active-directory/Phillip_Login_-_2_hu1d6d0c029b95a81a38dc0ce8f95c5752_474284_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Phillip Login - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Untuk set reset password, pertama kita harus mengganti passwotf <strong>Sophie</strong> dengan password sembarang, contohnya <code>P@ssw0rd</code> dengan command <code>Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose</code> lalu masukkan <code>P@ssw0rd</code> pada prompt:</p>
+<p><img src="/p/active-directory/Set_Password_-_1.png"
+	width="1858"
+	height="280"
+	srcset="/p/active-directory/Set_Password_-_1_hu5982970bb7ab07667f27125704299947_106871_480x0_resize_box_3.png 480w, /p/active-directory/Set_Password_-_1_hu5982970bb7ab07667f27125704299947_106871_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Set Password - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="663"
+		data-flex-basis="1592px"
+	
+></p>
+<p>Selanjutnya set agar <strong>Sophie</strong> harus mengganti passwordnya saat login dengan command <code>Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose</code>:</p>
+<p><img src="/p/active-directory/Set_Password_-_2.png"
+	width="1858"
+	height="330"
+	srcset="/p/active-directory/Set_Password_-_2_hu9dad3f40d845724bc201af5d2eb6cc4d_152409_480x0_resize_box_3.png 480w, /p/active-directory/Set_Password_-_2_hu9dad3f40d845724bc201af5d2eb6cc4d_152409_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Set Password - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="563"
+		data-flex-basis="1351px"
+	
+></p>
+<p>Setelah selesai coba login sebagai <strong>Sophie</strong> dengan menggunakan password <code>P@ssw0rd</code> dengan command <code>xfreerdp /u:THM\sophie /p:P@ssw0rd /v:10.10.108.177 /cert:ignore</code>:</p>
+<p><img src="/p/active-directory/sophie_Login.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/sophie_Login_hu954351c3528c6a5be092504b8c5dafc5_148257_480x0_resize_box_3.png 480w, /p/active-directory/sophie_Login_hu954351c3528c6a5be092504b8c5dafc5_148257_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="sophie Login"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Setelah memasukkan password, akan muncul tampilan untuk mengubah password, pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/Reset_Password_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Reset_Password_-_1_huf1856f2cb4563edf55ac769af7371238_134706_480x0_resize_box_3.png 480w, /p/active-directory/Reset_Password_-_1_huf1856f2cb4563edf55ac769af7371238_134706_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Reset Password - 1."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Selanjutnya, sebagai <strong>Sophie</strong> masukkan password baru:</p>
+<p><img src="/p/active-directory/Reset_Password_-_2.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Reset_Password_-_2_hu55fcb3e6891e91c76767b5a789b8ce70_162192_480x0_resize_box_3.png 480w, /p/active-directory/Reset_Password_-_2_hu55fcb3e6891e91c76767b5a789b8ce70_162192_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Reset Password - 2."
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Jike berhasil, maka akan muncul notifikasi seperti berikut, lalu pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/Reset_Password_-_3.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Reset_Password_-_3_huf1856f2cb4563edf55ac769af7371238_123320_480x0_resize_box_3.png 480w, /p/active-directory/Reset_Password_-_3_huf1856f2cb4563edf55ac769af7371238_123320_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Reset Password - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Logged in sebagai <strong>Sophie</strong>:</p>
+<p><img src="/p/active-directory/Reset_Password_-_4.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Reset_Password_-_4_hu00b7b22cb77b0d86316fdf2d4831833a_682940_480x0_resize_box_3.png 480w, /p/active-directory/Reset_Password_-_4_hu00b7b22cb77b0d86316fdf2d4831833a_682940_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Reset Password - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h2 id="ad-computers">AD Computers</h2>
+<p>Secara default, semua computers (kecuali Domain Controller) akan dikelompokkan dalam container bernama <strong>Computers</strong>.
+Biasanya terdapat beberapa computers seperti Laptop, PC dan Server:</p>
+<p><img src="/p/active-directory/Computers.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Computers_hu8c90b85e440822efe2f648237471450d_247386_480x0_resize_box_3.png 480w, /p/active-directory/Computers_hu8c90b85e440822efe2f648237471450d_247386_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Computers"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Namun, biasanya merupakan best practice untuk memilah computers dan mengelopokkannya ke dalam beberapa OU.
+Berikut beberapa OU yang dapat membantu kita untuk mengelompokkan computers:</p>
+<ul>
+<li><strong>Workstations</strong> sesuai namanya yang berarti stasiun kerja, merupakan device yang dapat digunakan untuk pekerjaan sehari-hari dan aktivitas browsing normal.
+Device ini semestinya tidak boleh digunakan oleh privileged user untuk sign in dan melakukan aktivitas apapun di sesi aktifnya.
+Workstations sangat sering dijumpai di AD.</li>
+<li><strong>Servers</strong> merupakan server, komputer yang digunakan untuk menyediakan services ke users ataupun ke server lainnya.
+Merupakan komputer tersering kedua yang dapat dijumpai di AD.</li>
+<li><strong>Domain Controllers</strong> merupakan komputer yang digunakan untuk me-manage domain AD.
+DC merupakan komputer paling vital di AD, hal ini karena DC memuat hashed passwords dari seluruh akun di dalam suatu domain AD.
+DC merupakan komputer tersering ketiga yang dapat dijumpai di AD.</li>
+</ul>
+<h3 id="group-computers">Group Computers</h3>
+<p>Computers tentunya dapat dimuat ke dalam beberapa groups dengan OU, pertama buat OU:</p>
+<p><img src="/p/active-directory/Group_Computer_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Group_Computer_-_1_hua094b086e234ee2beac1cb064815b5bd_328116_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_1_hua094b086e234ee2beac1cb064815b5bd_328116_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Membuat OU untuk <strong>Workstations</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_2.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p>Membuat OU untuk <strong>Servers</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_3.png"
+	width="784"
+	height="678"
+	srcset="/p/active-directory/Group_Computer_-_3_hu46c2a16e36ab0ae0c64afc5c76843371_56047_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_3_hu46c2a16e36ab0ae0c64afc5c76843371_56047_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="115"
+		data-flex-basis="277px"
+	
+></p>
+<p>Pastikan kedua OU tersebut berhasil dibuat:</p>
+<p><img src="/p/active-directory/Group_Computer_-_4.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Group_Computer_-_4_hue05de62504f137d3f7cf13fdfc836f15_206331_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_4_hue05de62504f137d3f7cf13fdfc836f15_206331_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Untuk memindahkan computers dapat dilakukan dengan drag-n-drop, selanjutnya pindahkan laptop dan PC ke OU <strong>Workstations</strong> dan pindahkan server ke OU <strong>Servers</strong> dan pilih <strong>Yes</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_5.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Group_Computer_-_5_hu441fc4dea15cb14b3ef3056d15876cc0_345292_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_5_hu441fc4dea15cb14b3ef3056d15876cc0_345292_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Berikut members dari OU <strong>Workstations</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_6.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Group_Computer_-_6_hub486749146876b097401588f85d64880_241627_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_6_hub486749146876b097401588f85d64880_241627_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Berikut members dari OU <strong>Servers</strong>:</p>
+<p><img src="/p/active-directory/Group_Computer_-_7.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/Group_Computer_-_7_hub486749146876b097401588f85d64880_215531_480x0_resize_box_3.png 480w, /p/active-directory/Group_Computer_-_7_hub486749146876b097401588f85d64880_215531_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Group Computer - 7"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h2 id="group-policy-object-gpo">Group Policy Object (GPO)</h2>
+<p>Group Policy Object atau GPO adalah sejumlah pengaturan yang dapat diaplikasikan untuk OUs.
+GPO dapat memuat policies baik untuk users maupun computers.
+GPO didistribusikan via network share bernama <code>SYSVOL</code>, yang disimpan pada DC.
+Semua users dalam domain harusnya memiliki akses ke share ini untuk melakukan sinkronisasi GPOs seiring berjalannya waktu.
+SYSVOL share berada pada <strong>C:\Windows\SYSVOL\sysvol\</strong> dari setiap DC yang berada pada network AD.</p>
+<p>Diperlukan waktu sampai 2 jam bagi computers untuk melakukan sinkronisasi terhadap pembaruan GPOs.
+Namun jika sinkronisasi dibutuhkan saat itu juka, users dapat menjalankan perintah berikut pada PowerShell <code>gpupdate /force</code>.</p>
+<h3 id="group-policy-management">Group Policy Management</h3>
+<p>Merupakan software yang digunakan untuk melakukan konfigurasi Group Policy, untuk membuka Group Policy Management dapat dilihat dari start menu:</p>
+<p><img src="/p/active-directory/GPO_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_1_hua5f21a9b9870d8499089e821671fb5ab_135364_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_1_hua5f21a9b9870d8499089e821671fb5ab_135364_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Group Policy Management akan menampilkan hierarki OU dalam AD, GPOs yang tersedia dan GPOs yang sudah diaplikasikan untuk tiap OU yang dipilih.
+Berikut kita dapat melihat 3 GPO yang sudah dibuat.
+Dari ketiganya, GPO <strong>Default Domain Policy</strong> dan GPO <strong>RDP Policy</strong> sudah diaplikasikan secara keseluruhan ke domain <strong>thm.local</strong> dan GPO <strong>Default Domain Controllers Policy</strong> sudah diaplikasikan ke OU <strong>Dmain Controllers</strong>.</p>
+<blockquote>
+<p>💡 <strong>NOTE</strong>: GPO akan diaplikasikan ke OUs dan sub-OUs.
+Contohnya OU <strong>Sales</strong> akan tetap terpengaruh GPO <strong>Default Domain Policy</strong> karena OU <strong>Sales</strong> berada di bawah OU <strong>THM</strong> yang berada di bawah <strong>thm.local</strong>.</p>
+</blockquote>
+<p><img src="/p/active-directory/GPO_-_2.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_2_hu3c9262cc04568ba1930bb6fad927c2b3_347544_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_2_hu3c9262cc04568ba1930bb6fad927c2b3_347544_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Untuk menganalisa GPO lebih lanjut, kita dapat memilih GPO yang ingin di analisa.
+Contoh, pada tab <strong>Scope</strong> kita dapat mengetahui bahwa GPO <strong>Default Domain Policy</strong> diaplikasikan pada <strong>thm.local</strong>.
+Kita juga dapat mengaplikasikan <strong>Security Filtering</strong> untuk GPOs sehingga GPOs tersebut hanya diaplikasikan untuk specific users/computers di dalam sebuah OU.
+Secara default GPO akan diaplikasikan untuk <strong>Authenticated Users</strong> yang mencakup seluruh users/PCs:</p>
+<p><img src="/p/active-directory/GPO_-_3.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_3_hue4ad462963a1ea751de5e8d801ac7413_333760_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_3_hue4ad462963a1ea751de5e8d801ac7413_333760_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Tab <strong>Settings</strong> dapat memperlihatkan detail terkait suatu GPO.</p>
+<blockquote>
+<p>💡 <strong>NOTE</strong>: Setiap GPO memiliki konfigurasi yang dapat diaplikasikan untuk computers dan konfigurasi yang dapat diaplikasikan untuk users.</p>
+</blockquote>
+<p>Berikut tampilan dari tab <strong>Settings</strong> yang dimiliki GPO <strong>Default Domain Policy</strong>, dapat dilihat bahwasannya GPO ini hanya mengaplikasikan computers configurations dan tidak mengaplikasikan users configurations (untuk mendapatkan detail yang lebih jelas, pilih tombol <strong>show</strong>):</p>
+<p><img src="/p/active-directory/GPO_-_4.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_4_hue4ad462963a1ea751de5e8d801ac7413_390570_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_4_hue4ad462963a1ea751de5e8d801ac7413_390570_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="create-user-configurations-gpo">Create User Configurations GPO</h3>
+<p>Untuk mengkonfigurasikan sebuah GPO, terlebih dahulu kita harus membuat GPO dalam <strong>Group Policy Objects</strong> lalu menerapkan GPO tersebut ke OU yang diinginkan.
+Pada contoh berikut, kita akan membuat sebuah GPO bernama <strong>Restrict Control Panel Access</strong>.
+GPO ini akan memblokir users agar tidak dapat membuka <strong>Control Panel</strong>.
+GPO akan diterapkan untuk OU <strong>Marketing</strong>, <strong>Management</strong> dan <strong>Sales</strong>.
+Berikut langkah-langkah yang harus dilakukan:</p>
+<p>Right-click pada <strong>Group Policy Object</strong> lalu pilih <strong>New</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_5.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_5_hu4669795b0b59fd8979980b92e0e55b57_355756_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_5_hu4669795b0b59fd8979980b92e0e55b57_355756_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 5"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Beri nama GPO sesuai dengan apa yang dilakukannya, lalu pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_6.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_6_hu6d9eaed499c337efc91f2142baa55a61_343172_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_6_hu6d9eaed499c337efc91f2142baa55a61_343172_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 6"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Kemudian right-click pada GPO yang baru dibuat dan pilih <strong>Edit</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_7.png"
+	width="1860"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_7_hu3b24187614bfa69e54b9d808a9365a57_372849_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_7_hu3b24187614bfa69e54b9d808a9365a57_372849_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 7"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="309px"
+	
+></p>
+<p>Lalu <strong>Group Policy Management Editor</strong> akan terbuka, navigasi ke <strong>User Configuration</strong> → <strong>Policies</strong> → <strong>Administrative Template</strong> → <strong>Control Panel</strong> lalu right-click pada <strong>Prohibit access to Control Panel and PC settings</strong> kemudian pilih <strong>Edit</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_8.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_8_hu071f4c38d55bc48cc866db278f95e679_390420_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_8_hu071f4c38d55bc48cc866db278f95e679_390420_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 8"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Pilih <strong>Enabled</strong> lalu pilih <strong>Apply</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_9.png"
+	width="1232"
+	height="1142"
+	srcset="/p/active-directory/GPO_-_9_huaa77ead9816163419da13c83735a10fd_233040_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_9_huaa77ead9816163419da13c83735a10fd_233040_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 9"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="107"
+		data-flex-basis="258px"
+	
+></p>
+<p>Cek kembali GPO yang telah dimodifikasi pastikan bahwa <strong>State</strong> menunjukkan <strong>Enabled</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_10.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_10_hu1f2667275f8d9f1fee8df417888ba5e4_372973_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_10_hu1f2667275f8d9f1fee8df417888ba5e4_372973_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 10"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Selanjutnya drag-n-drop GPO ke OU yang dituju, yaitu OU <strong>Marketing</strong>, <strong>Management</strong> dan <strong>Sales</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_11.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_11_hu6479d92d249a55e280c79bd9cf0e8af2_358215_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_11_hu6479d92d249a55e280c79bd9cf0e8af2_358215_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 11"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Pastikan kembali bahwa GPO yang dipilih sudah diaplikasikan ke OU yang sesuai:</p>
+<p><img src="/p/active-directory/GPO_-_12.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_12_hu751b4bc86c8e0799d4a02dd215816582_399982_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_12_hu751b4bc86c8e0799d4a02dd215816582_399982_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 12"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Untuk membuktikan ini, kita dapat masuk ke akun <strong>Mark</strong> yang merupakan member dari OU Marketing melalui RDP dengan command <code>xfreerdp /u:THM\Mark /p:M4rk3t1ng.21 /v:10.10.72.164 /cert:ignore</code>:</p>
+<p><img src="/p/active-directory/GPO_Mark_-_1.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_Mark_-_1_hu7463d63409e072b34f958a675c0b63ea_149289_480x0_resize_box_3.png 480w, /p/active-directory/GPO_Mark_-_1_hu7463d63409e072b34f958a675c0b63ea_149289_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO Mark - 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Setelah berhasil login, buka PowerShell lalu sinkronisasi akun Mark dengan GPO yang diperbarui dengan command <code>gpupdate /force</code>:</p>
+<p><img src="/p/active-directory/GPO_Mark_-_2.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_Mark_-_2_hu9d295ae851680a62f58bbee63e7eeb93_215356_480x0_resize_box_3.png 480w, /p/active-directory/GPO_Mark_-_2_hu9d295ae851680a62f58bbee63e7eeb93_215356_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO Mark - 2"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Selanjutnya buka Control Panel:</p>
+<p><img src="/p/active-directory/GPO_Mark_-_3.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_Mark_-_3_hu30e57ec06877c622f92f2a19158842f2_467961_480x0_resize_box_3.png 480w, /p/active-directory/GPO_Mark_-_3_hu30e57ec06877c622f92f2a19158842f2_467961_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO Mark - 3"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Dan akses Control Panel yang dimiliki Mark akan diblok oleh GPO:</p>
+<p><img src="/p/active-directory/GPO_Mark_-_4.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_Mark_-_4_hu0344763075b2f8a58bb0311d41a8c416_641874_480x0_resize_box_3.png 480w, /p/active-directory/GPO_Mark_-_4_hu0344763075b2f8a58bb0311d41a8c416_641874_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO Mark - 4"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="create-computer-configurations-gpo">Create Computer Configurations GPO</h3>
+<p>Pada contoh berikut, kita akan membuat GPO yang akan melakukan lock screen jika tidak ada aktivitas dalam 5 menit terakhir.
+GPO ini akan diberi nama <strong>Auto Lock Screen</strong>.
+GPO ini akan diaplikasikan untuk OU <strong>Workstations</strong>, <strong>Servers</strong> dan <strong>Domain Controllers</strong>.
+Namun, karena ketiga OU yang dituju adalah child dari root domain <strong>thm.local</strong> maka GPO akan diaplikasikan ke root domain.
+GPO ini nantinya akan mempengaruhi OUs dan sub-OUs dibawah root domain.</p>
+<p>GPO ini tidak akan mempengaruhi OU seperti <strong>Sales</strong> atau <strong>Marketing</strong> karena OU tersebut hanya memiliki anggota berupa users bukan berupa computers sehingga OU akan mengabaikan GPO ini.
+Berikut langkah-langkah yang dilakukan untuk membuat GPO ini:</p>
+<p>Right-click pada <strong>Group Policy Objects</strong> lalu pilih <strong>New</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_13.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_13_hu751b4bc86c8e0799d4a02dd215816582_416256_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_13_hu751b4bc86c8e0799d4a02dd215816582_416256_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 13"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Masukkan nama GPO yang sesuai lalu pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_14.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_14_hu61284953cb0afc44074f18922a89cea9_404563_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_14_hu61284953cb0afc44074f18922a89cea9_404563_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 14"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Right-click pada GPO yang baru dibuat dan pilih <strong>Edit</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_15.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_15_hu44dfd96917ccbd4791026d0d97e23e22_390846_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_15_hu44dfd96917ccbd4791026d0d97e23e22_390846_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 15"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Lalu navigasi ke <strong>Computer Configuration</strong> → <strong>Policies</strong> → <strong>Windows Settings</strong> → <strong>Security Settings</strong> → <strong>Local Policies</strong> → <strong>Security Options</strong> lalu right-click pada <strong>Interactive logon: Machine inactivity limit</strong> dan pilih <strong>Properties</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_16.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_16_hued45a91d99168152a41a6941c2fcdc11_611145_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_16_hued45a91d99168152a41a6941c2fcdc11_611145_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 16"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Pilih <strong>Define this policy setting</strong> lalu masukkan 300 detik (custom) sehingga computer yang tidak aktif dalam 5 menit akan di-lock, kemudian pilih <strong>Apply</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_17.png"
+	width="748"
+	height="910"
+	srcset="/p/active-directory/GPO_-_17_hu98cbfe0985f3aaa31ec9b48a9c18fa15_80743_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_17_hu98cbfe0985f3aaa31ec9b48a9c18fa15_80743_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 17"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="82"
+		data-flex-basis="197px"
+	
+></p>
+<p>Berikutnya, cek kembali GPO yang sudah dikonfigurasi:</p>
+<p><img src="/p/active-directory/GPO_-_18.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_18_hu50e29e4a7106f627e53a02fb9c5c44d8_576419_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_18_hu50e29e4a7106f627e53a02fb9c5c44d8_576419_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 18"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Aplikasikan GPO ke root domain <strong>thm.local</strong> dengan melakukan drag-n-drop GPO ke root domain, lalu pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_19.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_19_hu8635406bcbf226890e9b228e79306268_401878_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_19_hu8635406bcbf226890e9b228e79306268_401878_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 19"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Terkhir, cek kembali GPO yang sudah diaplikasikan:</p>
+<p><img src="/p/active-directory/GPO_-_20.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_20_hu5e7b99e02f8d3d7eee03ad9dfda00e28_369000_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_20_hu5e7b99e02f8d3d7eee03ad9dfda00e28_369000_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 20"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Lakukan <code>gpupdate</code> untuk melakukan sinkronisasi GPO dengan memasukkan command <code>gpupdate /force</code> pada PowerShell:</p>
+<p><img src="/p/active-directory/GPO_-_21.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_21_hub2b88403e060341feb8e23b6c846b874_189623_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_21_hub2b88403e060341feb8e23b6c846b874_189623_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 21"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<h3 id="edit-gpo">Edit GPO</h3>
+<p>GPO &ldquo;<strong>Default Domain Policy</strong>&rdquo; merupakan konfigurasi standar yang seharusnya diaplikasikan di sebagian besar domains, di dalamnya terdapat policy yang mengatur tentang password dan account lockout:</p>
+<p><img src="/p/active-directory/GPO_-_22.png"
+	width="1208"
+	height="1088"
+	srcset="/p/active-directory/GPO_-_22_hu141b594acbc6625bf6b5b9235bdf9a84_293487_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_22_hu141b594acbc6625bf6b5b9235bdf9a84_293487_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 22"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="111"
+		data-flex-basis="266px"
+	
+></p>
+<p>Karena GPO ini diaplikasikan ke keseluruhan domain, maka tiap perubahan pada GPO tersbut akan berpengaruh terhadap seluruh computers.
+Pada contoh berikut, kita akan mencoba untuk mengubah <strong>Minimum password length</strong> menjadi 10 characters.</p>
+<p>Pertama, right-click pada GPO yang ingin diubah lalu pilih <strong>Edit</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_23.png"
+	width="1858"
+	height="1444"
+	srcset="/p/active-directory/GPO_-_23_hu1a2cfcafba7a833ba8b3a2022c5b65f7_482364_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_23_hu1a2cfcafba7a833ba8b3a2022c5b65f7_482364_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 23"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="128"
+		data-flex-basis="308px"
+	
+></p>
+<p>Hal ini akan membuka suatu window baru bernama <strong>Group Policy Management Editor</strong>.
+Selanjutnya pilih <strong>Computer Configurations</strong> → <strong>Policies</strong> → <strong>Windows Setting</strong> →  <strong>Security Settings</strong> → <strong>Account Policies</strong> → <strong>Password Policy</strong> lalu right-click pada <strong>Minimum password length</strong> dan pilih <strong>Properties</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_24.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_24_hu6266271a189c0fb85b27fb977285c33d_323891_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_24_hu6266271a189c0fb85b27fb977285c33d_323891_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 24"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Lalu masukkan panjang password yang sesuai, lalu pilih <strong>Apply</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_25.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_25_hu35ff4428328a052d72938eb8421b3f7e_256376_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_25_hu35ff4428328a052d72938eb8421b3f7e_256376_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 25"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Pilih <strong>OK</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_26.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_26_hu35ff4428328a052d72938eb8421b3f7e_256051_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_26_hu35ff4428328a052d72938eb8421b3f7e_256051_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 26"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Cek kembali policy yang telah diubah:</p>
+<p><img src="/p/active-directory/GPO_-_27.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_27_hud1f816751bc2ea52d21838d6fa3abaa0_306596_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_27_hud1f816751bc2ea52d21838d6fa3abaa0_306596_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 27"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<p>Untuk memeriksa policy lebih detail, kita bisa melihat keterangan policy pada tab <strong>Explain</strong>:</p>
+<p><img src="/p/active-directory/GPO_-_28.png"
+	width="1414"
+	height="1014"
+	srcset="/p/active-directory/GPO_-_28_huf82e3a0337f688b034bb3cddff488b15_323014_480x0_resize_box_3.png 480w, /p/active-directory/GPO_-_28_huf82e3a0337f688b034bb3cddff488b15_323014_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="GPO - 28"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="139"
+		data-flex-basis="334px"
+	
+></p>
+<h1 id="references">References</h1>
+<blockquote>
+<p><a class="link" href="https://tryhackme.com/room/winadbasics"  target="_blank" rel="noopener"
+    >TryHackMe | Active Directory Basics</a></p>
+</blockquote>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/active-directory/">active directory</a>
+        
+            <a href="/tags/ad/">ad</a>
+        
+            <a href="/tags/dc/">dc</a>
+        
+            <a href="/tags/domain-controller/">domain controller</a>
+        
+            <a href="/tags/delegation/">delegation</a>
+        
+            <a href="/tags/gpo/">gpo</a>
+        
+            <a href="/tags/ou/">ou</a>
+        
+            <a href="/tags/pentest/">pentest</a>
+        
+            <a href="/tags/windows/">windows</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2022 - 
+        
+        2023 Operacastor Blog
+    </section>
+    
+    <section class="powerby">
+        Dibangun dengan <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Tema <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> dirancang oleh <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

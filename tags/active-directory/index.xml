@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>active directory on Operacastor Blog</title>
+        <link>https://operacastor.github.io/tags/active-directory/</link>
+        <description>Recent content in active directory on Operacastor Blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>id-id</language>
+        <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/tags/active-directory/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Active Directory</title>
+        <link>https://operacastor.github.io/p/active-directory/</link>
+        <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/p/active-directory/</guid>
+        <description>&lt;img src="https://operacastor.github.io/p/active-directory/cover-002.png" alt="Featured image of post Active Directory" /&gt;&lt;h1 id=&#34;windows-domain&#34;&gt;Windows Domain&lt;/h1&gt;
+&lt;p&gt;Windows Domain adalah sebuah jaringan khusus yang berisi users dan computers yang diatur oleh pengelola atau admin dalam suatu organisasi.
+Organisasi yang dimaksud dapat berupa perusahaan, layanan masyarakat, sekolah atau perguruan tinggi, perbankan dll.
+Windows Domain berguna untuk mensentralisasikan administrasi dari objek-objek yang dimiliki suatu jaringan komputer Windows dalam sebuah repository bernama &lt;strong&gt;Active Directory (AD)&lt;/strong&gt;.
+Server yang menjalankan service Active Directory disebut dengan &lt;strong&gt;Domain Controller (DC)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Kelebihan yang didapatkan dengan menggunakan Windows Domain dan Active Directory adalah:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Identity Management yang Tersentralisasi&lt;/strong&gt;: Seluruh users dalam suatu jaringan dapat dikonfigurasikan dengan mudah menggunakan AD.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memudahkan pengelolaan Security Policies&lt;/strong&gt;: Kita dapat melakukan konfigurasi security policies secara langsung dari Active Directory dan mengaplikasikannya ke users dan computers dalam suatu jaringan AD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;active-directory-login-via-rdp&#34;&gt;Active Directory Login via RDP&lt;/h2&gt;
+&lt;p&gt;Untuk terhubung via RDP dengan user dan computer yang tergabung dalam AD, kita dapat meggunakan (contoh) command &lt;code&gt;xfreerdp /u:THM\Administrator /p:Password321 /v:10.10.108.177 /cert:ignore&lt;/code&gt;.
+Perlu diperhatikan bahwa &lt;code&gt;/u:THM\Administrator&lt;/code&gt; mengindikasikan bahwa kita ingin terhubung sebagai &lt;code&gt;Administrator&lt;/code&gt; pada domain &lt;code&gt;THM&lt;/code&gt; sedangkan &lt;code&gt;/p:Password321&lt;/code&gt; adalah user password dan &lt;code&gt;/v:10.10.108.177&lt;/code&gt; merupakan IP dari computer yang tergabung dalam domain yang dituju:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Administrator_Login.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Administrator_Login_hu954351c3528c6a5be092504b8c5dafc5_151530_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Administrator_Login_hu954351c3528c6a5be092504b8c5dafc5_151530_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Administrator Login&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;active-directory&#34;&gt;Active Directory&lt;/h1&gt;
+&lt;p&gt;Inti dari Windows Domain adalah &lt;strong&gt;Active Directory Domain Service (AD DS)&lt;/strong&gt;.
+Service ini seperti suatu katalog yang menyimpan semua informasi dari “Objects” yang terdapat pada jaringan AD itu sendiri.
+Object merupakan entitas yang mewakili resources yang terdapat pada jaringan AD.&lt;/p&gt;
+&lt;h2 id=&#34;ad-objects&#34;&gt;AD Objects&lt;/h2&gt;
+&lt;h3 id=&#34;users&#34;&gt;Users&lt;/h3&gt;
+&lt;p&gt;Users merupakan salah satu objek &lt;strong&gt;security principals&lt;/strong&gt;, yang berarti bahwa mereka dapat melakukan autentikasi pada domain dan dapat diberikan &lt;strong&gt;privileges&lt;/strong&gt; pada &lt;strong&gt;resources&lt;/strong&gt; seperti files atau printers.
+&lt;strong&gt;Security principals&lt;/strong&gt; adalah objek yang dapat melakukan tindakan-tindakan pada resources dalam suatu jaringan.&lt;/p&gt;
+&lt;p&gt;Users dapat direpresentasikan kedalam dua entitas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;People&lt;/strong&gt;: Users dapat direpresentasikan sebagai seseorang dalam suatu organisasi yang membutuhkan akses ke jaringan, seperti pegawai atau karyawan suatu kantor.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Services&lt;/strong&gt;: Users juga dapat direpresentasikan sebagai services seperti IIS atau MSSQL.
+Setiap service membutuhkan sebuah user untuk dapat berjalan, tetapi service users berbeda dengan regular users karena service users hanya memiliki privileges yang dibutuhkan untuk menjalankan suatu service.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;machines&#34;&gt;Machines&lt;/h3&gt;
+&lt;p&gt;Setiap komputer yang tergabung dalam domain AD, akan direpresentasikan sebagai &lt;strong&gt;machines&lt;/strong&gt; object.
+Machines juga dapat dikatakan sebagai “security principals” dan diberikan sebuah akun seperti regular user.
+Akun ini diberikan hak terbatas dalam domain tersebut.&lt;/p&gt;
+&lt;p&gt;Machine accounts itu sendiri merupakan local administrator pada suatu komputer fisik, machine accounts tidak seharusnya dapat diakses oleh orang lain kecuali komputer itu sendiri.
+Namun, jika kita mengetahui passwordnya maka kita tetap dapat melakukan login.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;NOTE&lt;/strong&gt;: Password yang dimiliki Machine Accounts akan secara otomatis melakukan rotasi dan biasanya password ini berupa 120 karakter random.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Mengidentifikasi machine account cenderung lebih mudah karena memiliki penamaan yang khusus.
+Machine account name adalah nama komputer ditambah dengan sebuah dollar sign &lt;code&gt;$&lt;/code&gt;.
+Contohnya, sebuah komputer dengan nama &lt;code&gt;DC01&lt;/code&gt; akan memiliki machine account dengan nama &lt;code&gt;DC01$&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;security-groups&#34;&gt;Security Groups&lt;/h3&gt;
+&lt;p&gt;Pada Windows kita dapat membuat sebuah &lt;strong&gt;user groups&lt;/strong&gt; yang memiliki akses ke resources yang tersedia, dibandingkan dengan memberikan akses ke user yang dipilih satu persatu.
+Ini dapat mempermudah pengelolaan karena kita dapat menambahkan suatu user ke suatu grup dan user tersebut akan mendapat privileges yang sama dengan anggota satu grupnya.
+Security Groups juga termasuk sebagai security principals karena memiliki privileges terhadap resources yang tersedia.&lt;/p&gt;
+&lt;p&gt;Groups dapat beranggotakan baik users maupun machines.
+Jika diperlukan, groups juga dapat beranggotakan group lainnya.&lt;/p&gt;
+&lt;p&gt;Beberapa groups dibuat secara default dalam suatu domain yang dapat digunakan untuk memberikan privileges yang spesifik kepada users.
+Sebagai contoh, berikut beberapa groups penting yang terdapat dalam suatu domain:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Domain Admins&lt;/strong&gt;: Memiliki privileges terhadap keseluruhan domain.
+Secara default, domain admins dapat mengelola seluruh komputer dalam suatu domain, termasuk Domain Controllers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server Operators&lt;/strong&gt;: Memiliki privileges untuk mengelola Domain Controllers.
+Mereka tidak dapat mengubah pengelolaan group membership apapun.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Operators&lt;/strong&gt;: Memiliki privileges untuk mengelola file apapun dengan mengabaikan permission-nya.
+Mereka ditugaskan untuk melakukan backup data pada computers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Operators&lt;/strong&gt;: Memiliki privileges untuk membuat dan memodifikasi akun lainnya dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain Users&lt;/strong&gt;: Seluruh user accounts dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain Computers&lt;/strong&gt;: Seluruh computers dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain Controllers&lt;/strong&gt;: Seluruh Domain Controller dalam domain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Active Directory security groups&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;active-directory-users-and-computers&#34;&gt;Active Directory Users and Computers&lt;/h2&gt;
+&lt;p&gt;Untuk mengelola users, groups maupun machines dalam AD, kita dapat login ke Domain Controller dan menjalankan &lt;strong&gt;Active Directory Users and Computers&lt;/strong&gt; dari start menu:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Active_Directory_Users_and_Computers.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Active_Directory_Users_and_Computers_hu6622b386a9d09e9ad8004074142b9157_173559_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Active_Directory_Users_and_Computers_hu6622b386a9d09e9ad8004074142b9157_173559_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Active Directory Users and Computers&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Ini akan membuka sebuah window di mana kita dapat melihat hierarki dari users, computers dan groups yang terdapat dalam domain.
+Biasanya object tergabung dalam &lt;strong&gt;Organizational Units (OUs)&lt;/strong&gt; yang merupakan sebuah container untuk mengelompokkan users dan machines.
+OU biasanya digunakan untuk mendefinisikan sejumlah users dengan policy yang sama.
+Adapun policy adalah suatu konfigurasi yang dapat diaplikasikan pada objects.
+Contohnya adalah terdapat policy yang digunakan untuk mengatur jumlah karakter minimum password users.
+OU mempermudah policy untuk dapat diaplikasikan ke kelompok yang spesifik, seperti pegawai Sales department mungkin diberikan policy yang berbeda dengan pegawai IT department.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;NOTE&lt;/strong&gt;: Sebuah user hanya dapat menjadi bagian dari satu buah OU pada satu waktu karena mengaplikasikan 2 atau lebih sekumpulan policies ke suatu user dapat berpotensi mengakibatkan tumpang tindih policies, namun satu atau lebih OU dapat menjadi anggota dari OU lainnya (parent and child OUs).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pada contoh berikut, terdapat suatu OU bernama &lt;strong&gt;THM&lt;/strong&gt; yang memiliki 5 child OUs yaitu &lt;strong&gt;IT&lt;/strong&gt;, &lt;strong&gt;Management&lt;/strong&gt;, &lt;strong&gt;Marketing&lt;/strong&gt;, &lt;strong&gt;Research and Development&lt;/strong&gt; dan &lt;strong&gt;Sales&lt;/strong&gt;.
+OU biasanya direpresentasikan sesuai dengan struktur bisnis karena biasanya dibutuhkan policies yang berbeda untuk tiap department:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Organizational_Units.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Organizational_Units_hu0472cfa2737e8564b1c9043ddbf4173a_269278_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Organizational_Units_hu0472cfa2737e8564b1c9043ddbf4173a_269278_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Organizational Units&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;default-containers&#34;&gt;Default Containers&lt;/h3&gt;
+&lt;p&gt;Terdapat beberapa builtin containers yang dimiliki oleh suatu Domain, beberapa di antaranya adalah:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Builtin&lt;/strong&gt;: Berisi default groups yang tersedia untuk Windows host apapun.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Computers&lt;/strong&gt;: Machine apapun yang tergabung dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain Controllers&lt;/strong&gt;: OU default yang berisi Domain Controllers yang tergabung dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Users&lt;/strong&gt;: Users default dan groups yang tergabung dalam domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ForeignSecurityPrincipals&lt;/strong&gt;: Security principals, yang dibuat ketika object (users, computers, atau groups) ditambahkan ke beberapa domain group, tetapi berasal dari trusted external domains.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Managed Service Accounts&lt;/strong&gt;: Service accounts yang tergabung dalam domain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Default_Containers.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Default_Containers_hu16ce7dd646e4178209f621e384e955ed_204492_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Default_Containers_hu16ce7dd646e4178209f621e384e955ed_204492_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Default Containers&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;357&#34;
+		data-flex-basis=&#34;857px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ou-members&#34;&gt;OU Members&lt;/h3&gt;
+&lt;p&gt;Jika kita memilih suatu OU, maka akan muncul list nama dan tipe dari member yang dimiliki OU tersebut, seperti contohnya OU &lt;strong&gt;IT&lt;/strong&gt; memiliki 3 users dengan nama &lt;strong&gt;Claire&lt;/strong&gt;, &lt;strong&gt;Mary&lt;/strong&gt; dan &lt;strong&gt;Phillip&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Member_OU.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Member_OU_hu94eefb61a587131f1b68fe43bcf4aa41_216712_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Member_OU_hu94eefb61a587131f1b68fe43bcf4aa41_216712_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Member OU&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;add-ou&#34;&gt;Add OU&lt;/h3&gt;
+&lt;p&gt;Untuk menambahkan OU, right-click parent object, pilih &lt;strong&gt;New&lt;/strong&gt; lalu pilih &lt;strong&gt;Organizational Unit&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_OU.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_OU_hu2a44bcb3b44534f6f9a91c19f1842115_321795_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_OU_hu2a44bcb3b44534f6f9a91c19f1842115_321795_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add OU&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Kemudian masukkan nama OU yang ingin dibuat lalu pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_2.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;delete-ou&#34;&gt;Delete OU&lt;/h3&gt;
+&lt;p&gt;Untuk menghapus OU, pertama kita harus meng-enable &lt;strong&gt;Advanced Features&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_1_huaac5398166a78cf61bcf1b6e2eeee2b3_257776_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_1_huaac5398166a78cf61bcf1b6e2eeee2b3_257776_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu memilih OU yang akan dihapus, right-click dan pilih &lt;strong&gt;Properties&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_2_huf13edd1ded9f65484543ae8bc87e4742_415421_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_2_huf13edd1ded9f65484543ae8bc87e4742_415421_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya matikan opsi &lt;strong&gt;Protect object from accidental deletion&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_3.png&#34;
+	width=&#34;718&#34;
+	height=&#34;816&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_3_hu50fd7086255974e3748ed93a27bd351e_101451_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_3_hu50fd7086255974e3748ed93a27bd351e_101451_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;87&#34;
+		data-flex-basis=&#34;211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu pilih &lt;strong&gt;Apply&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_4.png&#34;
+	width=&#34;718&#34;
+	height=&#34;816&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_4_hu92b3879928ffb778ee3b317ec70b61cd_101064_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_4_hu92b3879928ffb778ee3b317ec70b61cd_101064_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;87&#34;
+		data-flex-basis=&#34;211px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah itu right-click OU yang ingin dihapus, kemudian pilih &lt;strong&gt;Delete&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_5.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_5_hu7244814032289a20174af23ab392ca75_253280_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_5_hu7244814032289a20174af23ab392ca75_253280_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Terakhir, pilih &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_6.png&#34;
+	width=&#34;690&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_OU_-_6_hu7d279fca123d27a5cd1155e5a8ab071c_33433_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_OU_-_6_hu7d279fca123d27a5cd1155e5a8ab071c_33433_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete OU - 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;253&#34;
+		data-flex-basis=&#34;608px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;security-groups-vs-ous&#34;&gt;Security Groups vs OUs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OUs&lt;/strong&gt; biasa digunakan untuk &lt;strong&gt;mengaplikasikan policies dan konfigurasi spesifik&lt;/strong&gt; ke users dan computers sesuai pada role mereka masing-masing.
+Satu user hanya dapat tergabung ke dalam satu OU karena tidak masuk akal untuk mengaplikasikan 2 atau lebih policies sets ke suatu user (berpotensi tumpang tindih).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Groups&lt;/strong&gt; biasa digunakan untuk &lt;strong&gt;memberikan permission terhadap resources&lt;/strong&gt;.
+Contohnya, kita dapat menggunakan groups untuk mengizinkan beberapa users untuk dapat mengakses shared folder pada network printer.
+Sebuah user dapat tergabung dalam beberapa groups, yang mungkin membutuhkan akses ke beberapa resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;ad-management&#34;&gt;AD Management&lt;/h1&gt;
+&lt;h2 id=&#34;ad-users&#34;&gt;AD Users&lt;/h2&gt;
+&lt;h3 id=&#34;add-user&#34;&gt;Add User&lt;/h3&gt;
+&lt;p&gt;Berikut contoh untuk menambahkan user pada OU &lt;strong&gt;Sales&lt;/strong&gt;.
+Right-click pada OU yang diinginkan, lalu pilih &lt;strong&gt;New&lt;/strong&gt; dan pilih &lt;strong&gt;User&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_1_hu6f0a4139c955813b1345b93f3de3c733_360089_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_User_-_1_hu6f0a4139c955813b1345b93f3de3c733_360089_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add User - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah itu isi user detail lalu pilih &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_2.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_2_hu2779a0f60955f9516161872ce8d99507_75422_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_User_-_2_hu2779a0f60955f9516161872ce8d99507_75422_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add User - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu masukkan password dan confirm password, kemudian pilih &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_3.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_3_hub64c664ded2112dab7154867d069e863_80638_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_User_-_3_hub64c664ded2112dab7154867d069e863_80638_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add User - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Jika dirasa sudah sesuai, pilih tombol &lt;strong&gt;Finish&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_4.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_4_hu52bdf98fdf1af5c30e7c69cea047fd64_75796_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_User_-_4_hu52bdf98fdf1af5c30e7c69cea047fd64_75796_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add User - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Kemudian cek bahwa user baru telah berhasil ditambahkan ke OU:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_5.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Add_User_-_5_huee528e4b925fe54d2582c5c213c13781_236830_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Add_User_-_5_huee528e4b925fe54d2582c5c213c13781_236830_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Add User - 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;delete-user&#34;&gt;Delete User&lt;/h3&gt;
+&lt;p&gt;Right-click pada user yang ingin dihapus, lalu pilih &lt;strong&gt;Delete&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_User_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_User_-_1_hu9569968c47348d2212e269f9c3037cc5_277710_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_User_-_1_hu9569968c47348d2212e269f9c3037cc5_277710_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete User - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Kemudian pilih &lt;strong&gt;Yes&lt;/strong&gt; untuk menghapus user:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delete_User_-_2.png&#34;
+	width=&#34;674&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delete_User_-_2_hu1ecb4a41375ea90e96af397143927fe0_29166_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delete_User_-_2_hu1ecb4a41375ea90e96af397143927fe0_29166_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delete User - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;247&#34;
+		data-flex-basis=&#34;594px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;delegation&#34;&gt;Delegation&lt;/h3&gt;
+&lt;p&gt;Delegation adalah sebuah proses untuk memberikan specific privileges ke user(s) untuk dapat melakukan advanced tasks terhadap OUs tanpa membutuhkan campur tangan Domain Administrator.&lt;/p&gt;
+&lt;p&gt;Contohnya memberikan privileges kepada OU &lt;strong&gt;IT Support&lt;/strong&gt; untuk dapat melakukan password reset ke low-privileged users atau OU lainnya.&lt;/p&gt;
+&lt;p&gt;Pada contoh berikut, &lt;strong&gt;Phillip&lt;/strong&gt; yang tergabung dalam OU &lt;strong&gt;IT&lt;/strong&gt; akan didelegasikan kontrol untuk melakukan &lt;strong&gt;password reset&lt;/strong&gt; terhadap OU &lt;strong&gt;Sales:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Right-click pada OU yang dituju yaitu OU &lt;strong&gt;Sales&lt;/strong&gt;, lalu pilih &lt;strong&gt;Delegate Control&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_1_hued9e687d44bdd4e7de894d2ab8dc4205_301277_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_1_hued9e687d44bdd4e7de894d2ab8dc4205_301277_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu pilih &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_2.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_2_hu8f9b7f1155feee67862eb57d958bb9e0_112336_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_2_hu8f9b7f1155feee67862eb57d958bb9e0_112336_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pilih &lt;strong&gt;Add:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_3.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_3_hu0c9f35fbb951089a1658451e1c9bdf75_67070_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_3_hu0c9f35fbb951089a1658451e1c9bdf75_67070_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pada &lt;strong&gt;Enter the object names to select&lt;/strong&gt;, ketikkan nama &lt;strong&gt;Phillip&lt;/strong&gt; lalu pilih &lt;strong&gt;Check Names&lt;/strong&gt; agar nama yang kita masukkan merupakan nama yang valid:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_4.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_4_hu3f76ccf18db725b2e117b77c9f624e4f_93198_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_4_hu3f76ccf18db725b2e117b77c9f624e4f_93198_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Hal ini juga akan melakukan auto complete pada nama yang dimasukkan.
+Jika sudah sesuai, pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_5.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_5_hu3f76ccf18db725b2e117b77c9f624e4f_96698_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_5_hu3f76ccf18db725b2e117b77c9f624e4f_96698_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pilih &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_6.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_6_hu3122df443e4d46c97b4207fe645fe1ed_74957_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_6_hu3122df443e4d46c97b4207fe645fe1ed_74957_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu pilih kontrol yang akan di delegasikan ke &lt;strong&gt;Phillip&lt;/strong&gt;, yaitu kontrol &lt;strong&gt;Reset user passwords and force password change at next logon&lt;/strong&gt;, lalu pilih &lt;strong&gt;Next&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_7.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_7_hua5d21647a37a8143472064f83b03c2d2_125703_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_7_hua5d21647a37a8143472064f83b03c2d2_125703_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Terakhir, cek seluruh settings dan pilih &lt;strong&gt;Finish&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_8.png&#34;
+	width=&#34;894&#34;
+	height=&#34;702&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Delegation_-_8_hu80a1b342be02b0472780fb08a5cad215_134495_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Delegation_-_8_hu80a1b342be02b0472780fb08a5cad215_134495_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Delegation - 8&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;127&#34;
+		data-flex-basis=&#34;305px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk memeriksa apakah kontrol sudah didelegasikan kita akan login RDP sebagai Phillip dengan command &lt;code&gt;xfreerdp /u:THM\phillip /p:Claire2008 /v:10.10.108.177 /cert:ignore&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/phillip_Login.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/phillip_Login_hu4fd5db62e95e0a7312ddc4c2fef32501_149149_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/phillip_Login_hu4fd5db62e95e0a7312ddc4c2fef32501_149149_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;phillip Login&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Logged in sebagai phillip:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Phillip_Login_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Phillip_Login_-_1_hu765472b641a5aabfa3eaf998f42ae71f_660131_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Phillip_Login_-_1_hu765472b641a5aabfa3eaf998f42ae71f_660131_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Phillip Login - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Karena &lt;strong&gt;Phillip&lt;/strong&gt; tidak dapat membuka &lt;strong&gt;Active Directory Users and Computers&lt;/strong&gt;, maka kita harus menggunakan PowerShell:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Phillip_Login_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Phillip_Login_-_2_hu1d6d0c029b95a81a38dc0ce8f95c5752_474284_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Phillip_Login_-_2_hu1d6d0c029b95a81a38dc0ce8f95c5752_474284_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Phillip Login - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk set reset password, pertama kita harus mengganti passwotf &lt;strong&gt;Sophie&lt;/strong&gt; dengan password sembarang, contohnya &lt;code&gt;P@ssw0rd&lt;/code&gt; dengan command &lt;code&gt;Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt &#39;New Password&#39;) -Verbose&lt;/code&gt; lalu masukkan &lt;code&gt;P@ssw0rd&lt;/code&gt; pada prompt:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Set_Password_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;280&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Set_Password_-_1_hu5982970bb7ab07667f27125704299947_106871_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Set_Password_-_1_hu5982970bb7ab07667f27125704299947_106871_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Set Password - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;663&#34;
+		data-flex-basis=&#34;1592px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya set agar &lt;strong&gt;Sophie&lt;/strong&gt; harus mengganti passwordnya saat login dengan command &lt;code&gt;Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Set_Password_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;330&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Set_Password_-_2_hu9dad3f40d845724bc201af5d2eb6cc4d_152409_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Set_Password_-_2_hu9dad3f40d845724bc201af5d2eb6cc4d_152409_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Set Password - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;563&#34;
+		data-flex-basis=&#34;1351px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah selesai coba login sebagai &lt;strong&gt;Sophie&lt;/strong&gt; dengan menggunakan password &lt;code&gt;P@ssw0rd&lt;/code&gt; dengan command &lt;code&gt;xfreerdp /u:THM\sophie /p:P@ssw0rd /v:10.10.108.177 /cert:ignore&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/sophie_Login.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/sophie_Login_hu954351c3528c6a5be092504b8c5dafc5_148257_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/sophie_Login_hu954351c3528c6a5be092504b8c5dafc5_148257_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;sophie Login&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah memasukkan password, akan muncul tampilan untuk mengubah password, pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_1_huf1856f2cb4563edf55ac769af7371238_134706_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Reset_Password_-_1_huf1856f2cb4563edf55ac769af7371238_134706_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reset Password - 1.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya, sebagai &lt;strong&gt;Sophie&lt;/strong&gt; masukkan password baru:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_2_hu55fcb3e6891e91c76767b5a789b8ce70_162192_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Reset_Password_-_2_hu55fcb3e6891e91c76767b5a789b8ce70_162192_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reset Password - 2.&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Jike berhasil, maka akan muncul notifikasi seperti berikut, lalu pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_3.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_3_huf1856f2cb4563edf55ac769af7371238_123320_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Reset_Password_-_3_huf1856f2cb4563edf55ac769af7371238_123320_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reset Password - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Logged in sebagai &lt;strong&gt;Sophie&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_4.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Reset_Password_-_4_hu00b7b22cb77b0d86316fdf2d4831833a_682940_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Reset_Password_-_4_hu00b7b22cb77b0d86316fdf2d4831833a_682940_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Reset Password - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ad-computers&#34;&gt;AD Computers&lt;/h2&gt;
+&lt;p&gt;Secara default, semua computers (kecuali Domain Controller) akan dikelompokkan dalam container bernama &lt;strong&gt;Computers&lt;/strong&gt;.
+Biasanya terdapat beberapa computers seperti Laptop, PC dan Server:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Computers.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Computers_hu8c90b85e440822efe2f648237471450d_247386_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Computers_hu8c90b85e440822efe2f648237471450d_247386_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Computers&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Namun, biasanya merupakan best practice untuk memilah computers dan mengelopokkannya ke dalam beberapa OU.
+Berikut beberapa OU yang dapat membantu kita untuk mengelompokkan computers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workstations&lt;/strong&gt; sesuai namanya yang berarti stasiun kerja, merupakan device yang dapat digunakan untuk pekerjaan sehari-hari dan aktivitas browsing normal.
+Device ini semestinya tidak boleh digunakan oleh privileged user untuk sign in dan melakukan aktivitas apapun di sesi aktifnya.
+Workstations sangat sering dijumpai di AD.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Servers&lt;/strong&gt; merupakan server, komputer yang digunakan untuk menyediakan services ke users ataupun ke server lainnya.
+Merupakan komputer tersering kedua yang dapat dijumpai di AD.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain Controllers&lt;/strong&gt; merupakan komputer yang digunakan untuk me-manage domain AD.
+DC merupakan komputer paling vital di AD, hal ini karena DC memuat hashed passwords dari seluruh akun di dalam suatu domain AD.
+DC merupakan komputer tersering ketiga yang dapat dijumpai di AD.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;group-computers&#34;&gt;Group Computers&lt;/h3&gt;
+&lt;p&gt;Computers tentunya dapat dimuat ke dalam beberapa groups dengan OU, pertama buat OU:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_1_hua094b086e234ee2beac1cb064815b5bd_328116_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_1_hua094b086e234ee2beac1cb064815b5bd_328116_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Membuat OU untuk &lt;strong&gt;Workstations&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_2.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_2_hua9155bfbf5b1391a251ee07d386360d7_54109_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Membuat OU untuk &lt;strong&gt;Servers&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_3.png&#34;
+	width=&#34;784&#34;
+	height=&#34;678&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_3_hu46c2a16e36ab0ae0c64afc5c76843371_56047_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_3_hu46c2a16e36ab0ae0c64afc5c76843371_56047_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;277px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pastikan kedua OU tersebut berhasil dibuat:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_4.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_4_hue05de62504f137d3f7cf13fdfc836f15_206331_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_4_hue05de62504f137d3f7cf13fdfc836f15_206331_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk memindahkan computers dapat dilakukan dengan drag-n-drop, selanjutnya pindahkan laptop dan PC ke OU &lt;strong&gt;Workstations&lt;/strong&gt; dan pindahkan server ke OU &lt;strong&gt;Servers&lt;/strong&gt; dan pilih &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_5.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_5_hu441fc4dea15cb14b3ef3056d15876cc0_345292_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_5_hu441fc4dea15cb14b3ef3056d15876cc0_345292_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Berikut members dari OU &lt;strong&gt;Workstations&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_6.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_6_hub486749146876b097401588f85d64880_241627_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_6_hub486749146876b097401588f85d64880_241627_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Berikut members dari OU &lt;strong&gt;Servers&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_7.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/Group_Computer_-_7_hub486749146876b097401588f85d64880_215531_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/Group_Computer_-_7_hub486749146876b097401588f85d64880_215531_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Group Computer - 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;group-policy-object-gpo&#34;&gt;Group Policy Object (GPO)&lt;/h2&gt;
+&lt;p&gt;Group Policy Object atau GPO adalah sejumlah pengaturan yang dapat diaplikasikan untuk OUs.
+GPO dapat memuat policies baik untuk users maupun computers.
+GPO didistribusikan via network share bernama &lt;code&gt;SYSVOL&lt;/code&gt;, yang disimpan pada DC.
+Semua users dalam domain harusnya memiliki akses ke share ini untuk melakukan sinkronisasi GPOs seiring berjalannya waktu.
+SYSVOL share berada pada &lt;strong&gt;C:\Windows\SYSVOL\sysvol\&lt;/strong&gt; dari setiap DC yang berada pada network AD.&lt;/p&gt;
+&lt;p&gt;Diperlukan waktu sampai 2 jam bagi computers untuk melakukan sinkronisasi terhadap pembaruan GPOs.
+Namun jika sinkronisasi dibutuhkan saat itu juka, users dapat menjalankan perintah berikut pada PowerShell &lt;code&gt;gpupdate /force&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;group-policy-management&#34;&gt;Group Policy Management&lt;/h3&gt;
+&lt;p&gt;Merupakan software yang digunakan untuk melakukan konfigurasi Group Policy, untuk membuka Group Policy Management dapat dilihat dari start menu:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_1_hua5f21a9b9870d8499089e821671fb5ab_135364_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_1_hua5f21a9b9870d8499089e821671fb5ab_135364_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Group Policy Management akan menampilkan hierarki OU dalam AD, GPOs yang tersedia dan GPOs yang sudah diaplikasikan untuk tiap OU yang dipilih.
+Berikut kita dapat melihat 3 GPO yang sudah dibuat.
+Dari ketiganya, GPO &lt;strong&gt;Default Domain Policy&lt;/strong&gt; dan GPO &lt;strong&gt;RDP Policy&lt;/strong&gt; sudah diaplikasikan secara keseluruhan ke domain &lt;strong&gt;thm.local&lt;/strong&gt; dan GPO &lt;strong&gt;Default Domain Controllers Policy&lt;/strong&gt; sudah diaplikasikan ke OU &lt;strong&gt;Dmain Controllers&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;NOTE&lt;/strong&gt;: GPO akan diaplikasikan ke OUs dan sub-OUs.
+Contohnya OU &lt;strong&gt;Sales&lt;/strong&gt; akan tetap terpengaruh GPO &lt;strong&gt;Default Domain Policy&lt;/strong&gt; karena OU &lt;strong&gt;Sales&lt;/strong&gt; berada di bawah OU &lt;strong&gt;THM&lt;/strong&gt; yang berada di bawah &lt;strong&gt;thm.local&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_2_hu3c9262cc04568ba1930bb6fad927c2b3_347544_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_2_hu3c9262cc04568ba1930bb6fad927c2b3_347544_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk menganalisa GPO lebih lanjut, kita dapat memilih GPO yang ingin di analisa.
+Contoh, pada tab &lt;strong&gt;Scope&lt;/strong&gt; kita dapat mengetahui bahwa GPO &lt;strong&gt;Default Domain Policy&lt;/strong&gt; diaplikasikan pada &lt;strong&gt;thm.local&lt;/strong&gt;.
+Kita juga dapat mengaplikasikan &lt;strong&gt;Security Filtering&lt;/strong&gt; untuk GPOs sehingga GPOs tersebut hanya diaplikasikan untuk specific users/computers di dalam sebuah OU.
+Secara default GPO akan diaplikasikan untuk &lt;strong&gt;Authenticated Users&lt;/strong&gt; yang mencakup seluruh users/PCs:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_3.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_3_hue4ad462963a1ea751de5e8d801ac7413_333760_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_3_hue4ad462963a1ea751de5e8d801ac7413_333760_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Tab &lt;strong&gt;Settings&lt;/strong&gt; dapat memperlihatkan detail terkait suatu GPO.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;NOTE&lt;/strong&gt;: Setiap GPO memiliki konfigurasi yang dapat diaplikasikan untuk computers dan konfigurasi yang dapat diaplikasikan untuk users.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Berikut tampilan dari tab &lt;strong&gt;Settings&lt;/strong&gt; yang dimiliki GPO &lt;strong&gt;Default Domain Policy&lt;/strong&gt;, dapat dilihat bahwasannya GPO ini hanya mengaplikasikan computers configurations dan tidak mengaplikasikan users configurations (untuk mendapatkan detail yang lebih jelas, pilih tombol &lt;strong&gt;show&lt;/strong&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_4.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_4_hue4ad462963a1ea751de5e8d801ac7413_390570_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_4_hue4ad462963a1ea751de5e8d801ac7413_390570_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;create-user-configurations-gpo&#34;&gt;Create User Configurations GPO&lt;/h3&gt;
+&lt;p&gt;Untuk mengkonfigurasikan sebuah GPO, terlebih dahulu kita harus membuat GPO dalam &lt;strong&gt;Group Policy Objects&lt;/strong&gt; lalu menerapkan GPO tersebut ke OU yang diinginkan.
+Pada contoh berikut, kita akan membuat sebuah GPO bernama &lt;strong&gt;Restrict Control Panel Access&lt;/strong&gt;.
+GPO ini akan memblokir users agar tidak dapat membuka &lt;strong&gt;Control Panel&lt;/strong&gt;.
+GPO akan diterapkan untuk OU &lt;strong&gt;Marketing&lt;/strong&gt;, &lt;strong&gt;Management&lt;/strong&gt; dan &lt;strong&gt;Sales&lt;/strong&gt;.
+Berikut langkah-langkah yang harus dilakukan:&lt;/p&gt;
+&lt;p&gt;Right-click pada &lt;strong&gt;Group Policy Object&lt;/strong&gt; lalu pilih &lt;strong&gt;New&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_5.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_5_hu4669795b0b59fd8979980b92e0e55b57_355756_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_5_hu4669795b0b59fd8979980b92e0e55b57_355756_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 5&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Beri nama GPO sesuai dengan apa yang dilakukannya, lalu pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_6.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_6_hu6d9eaed499c337efc91f2142baa55a61_343172_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_6_hu6d9eaed499c337efc91f2142baa55a61_343172_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 6&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Kemudian right-click pada GPO yang baru dibuat dan pilih &lt;strong&gt;Edit&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_7.png&#34;
+	width=&#34;1860&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_7_hu3b24187614bfa69e54b9d808a9365a57_372849_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_7_hu3b24187614bfa69e54b9d808a9365a57_372849_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 7&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;309px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu &lt;strong&gt;Group Policy Management Editor&lt;/strong&gt; akan terbuka, navigasi ke &lt;strong&gt;User Configuration&lt;/strong&gt; → &lt;strong&gt;Policies&lt;/strong&gt; → &lt;strong&gt;Administrative Template&lt;/strong&gt; → &lt;strong&gt;Control Panel&lt;/strong&gt; lalu right-click pada &lt;strong&gt;Prohibit access to Control Panel and PC settings&lt;/strong&gt; kemudian pilih &lt;strong&gt;Edit&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_8.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_8_hu071f4c38d55bc48cc866db278f95e679_390420_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_8_hu071f4c38d55bc48cc866db278f95e679_390420_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 8&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pilih &lt;strong&gt;Enabled&lt;/strong&gt; lalu pilih &lt;strong&gt;Apply&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_9.png&#34;
+	width=&#34;1232&#34;
+	height=&#34;1142&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_9_huaa77ead9816163419da13c83735a10fd_233040_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_9_huaa77ead9816163419da13c83735a10fd_233040_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 9&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;258px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Cek kembali GPO yang telah dimodifikasi pastikan bahwa &lt;strong&gt;State&lt;/strong&gt; menunjukkan &lt;strong&gt;Enabled&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_10.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_10_hu1f2667275f8d9f1fee8df417888ba5e4_372973_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_10_hu1f2667275f8d9f1fee8df417888ba5e4_372973_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 10&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya drag-n-drop GPO ke OU yang dituju, yaitu OU &lt;strong&gt;Marketing&lt;/strong&gt;, &lt;strong&gt;Management&lt;/strong&gt; dan &lt;strong&gt;Sales&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_11.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_11_hu6479d92d249a55e280c79bd9cf0e8af2_358215_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_11_hu6479d92d249a55e280c79bd9cf0e8af2_358215_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 11&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pastikan kembali bahwa GPO yang dipilih sudah diaplikasikan ke OU yang sesuai:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_12.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_12_hu751b4bc86c8e0799d4a02dd215816582_399982_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_12_hu751b4bc86c8e0799d4a02dd215816582_399982_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 12&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk membuktikan ini, kita dapat masuk ke akun &lt;strong&gt;Mark&lt;/strong&gt; yang merupakan member dari OU Marketing melalui RDP dengan command &lt;code&gt;xfreerdp /u:THM\Mark /p:M4rk3t1ng.21 /v:10.10.72.164 /cert:ignore&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_1.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_1_hu7463d63409e072b34f958a675c0b63ea_149289_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_Mark_-_1_hu7463d63409e072b34f958a675c0b63ea_149289_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO Mark - 1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Setelah berhasil login, buka PowerShell lalu sinkronisasi akun Mark dengan GPO yang diperbarui dengan command &lt;code&gt;gpupdate /force&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_2.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_2_hu9d295ae851680a62f58bbee63e7eeb93_215356_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_Mark_-_2_hu9d295ae851680a62f58bbee63e7eeb93_215356_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO Mark - 2&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Selanjutnya buka Control Panel:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_3.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_3_hu30e57ec06877c622f92f2a19158842f2_467961_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_Mark_-_3_hu30e57ec06877c622f92f2a19158842f2_467961_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO Mark - 3&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Dan akses Control Panel yang dimiliki Mark akan diblok oleh GPO:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_4.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_Mark_-_4_hu0344763075b2f8a58bb0311d41a8c416_641874_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_Mark_-_4_hu0344763075b2f8a58bb0311d41a8c416_641874_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO Mark - 4&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;create-computer-configurations-gpo&#34;&gt;Create Computer Configurations GPO&lt;/h3&gt;
+&lt;p&gt;Pada contoh berikut, kita akan membuat GPO yang akan melakukan lock screen jika tidak ada aktivitas dalam 5 menit terakhir.
+GPO ini akan diberi nama &lt;strong&gt;Auto Lock Screen&lt;/strong&gt;.
+GPO ini akan diaplikasikan untuk OU &lt;strong&gt;Workstations&lt;/strong&gt;, &lt;strong&gt;Servers&lt;/strong&gt; dan &lt;strong&gt;Domain Controllers&lt;/strong&gt;.
+Namun, karena ketiga OU yang dituju adalah child dari root domain &lt;strong&gt;thm.local&lt;/strong&gt; maka GPO akan diaplikasikan ke root domain.
+GPO ini nantinya akan mempengaruhi OUs dan sub-OUs dibawah root domain.&lt;/p&gt;
+&lt;p&gt;GPO ini tidak akan mempengaruhi OU seperti &lt;strong&gt;Sales&lt;/strong&gt; atau &lt;strong&gt;Marketing&lt;/strong&gt; karena OU tersebut hanya memiliki anggota berupa users bukan berupa computers sehingga OU akan mengabaikan GPO ini.
+Berikut langkah-langkah yang dilakukan untuk membuat GPO ini:&lt;/p&gt;
+&lt;p&gt;Right-click pada &lt;strong&gt;Group Policy Objects&lt;/strong&gt; lalu pilih &lt;strong&gt;New&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_13.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_13_hu751b4bc86c8e0799d4a02dd215816582_416256_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_13_hu751b4bc86c8e0799d4a02dd215816582_416256_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 13&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Masukkan nama GPO yang sesuai lalu pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_14.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_14_hu61284953cb0afc44074f18922a89cea9_404563_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_14_hu61284953cb0afc44074f18922a89cea9_404563_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 14&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Right-click pada GPO yang baru dibuat dan pilih &lt;strong&gt;Edit&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_15.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_15_hu44dfd96917ccbd4791026d0d97e23e22_390846_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_15_hu44dfd96917ccbd4791026d0d97e23e22_390846_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 15&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu navigasi ke &lt;strong&gt;Computer Configuration&lt;/strong&gt; → &lt;strong&gt;Policies&lt;/strong&gt; → &lt;strong&gt;Windows Settings&lt;/strong&gt; → &lt;strong&gt;Security Settings&lt;/strong&gt; → &lt;strong&gt;Local Policies&lt;/strong&gt; → &lt;strong&gt;Security Options&lt;/strong&gt; lalu right-click pada &lt;strong&gt;Interactive logon: Machine inactivity limit&lt;/strong&gt; dan pilih &lt;strong&gt;Properties&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_16.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_16_hued45a91d99168152a41a6941c2fcdc11_611145_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_16_hued45a91d99168152a41a6941c2fcdc11_611145_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 16&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pilih &lt;strong&gt;Define this policy setting&lt;/strong&gt; lalu masukkan 300 detik (custom) sehingga computer yang tidak aktif dalam 5 menit akan di-lock, kemudian pilih &lt;strong&gt;Apply&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_17.png&#34;
+	width=&#34;748&#34;
+	height=&#34;910&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_17_hu98cbfe0985f3aaa31ec9b48a9c18fa15_80743_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_17_hu98cbfe0985f3aaa31ec9b48a9c18fa15_80743_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 17&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;82&#34;
+		data-flex-basis=&#34;197px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Berikutnya, cek kembali GPO yang sudah dikonfigurasi:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_18.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_18_hu50e29e4a7106f627e53a02fb9c5c44d8_576419_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_18_hu50e29e4a7106f627e53a02fb9c5c44d8_576419_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 18&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Aplikasikan GPO ke root domain &lt;strong&gt;thm.local&lt;/strong&gt; dengan melakukan drag-n-drop GPO ke root domain, lalu pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_19.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_19_hu8635406bcbf226890e9b228e79306268_401878_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_19_hu8635406bcbf226890e9b228e79306268_401878_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 19&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Terkhir, cek kembali GPO yang sudah diaplikasikan:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_20.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_20_hu5e7b99e02f8d3d7eee03ad9dfda00e28_369000_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_20_hu5e7b99e02f8d3d7eee03ad9dfda00e28_369000_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 20&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lakukan &lt;code&gt;gpupdate&lt;/code&gt; untuk melakukan sinkronisasi GPO dengan memasukkan command &lt;code&gt;gpupdate /force&lt;/code&gt; pada PowerShell:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_21.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_21_hub2b88403e060341feb8e23b6c846b874_189623_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_21_hub2b88403e060341feb8e23b6c846b874_189623_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 21&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;edit-gpo&#34;&gt;Edit GPO&lt;/h3&gt;
+&lt;p&gt;GPO &amp;ldquo;&lt;strong&gt;Default Domain Policy&lt;/strong&gt;&amp;rdquo; merupakan konfigurasi standar yang seharusnya diaplikasikan di sebagian besar domains, di dalamnya terdapat policy yang mengatur tentang password dan account lockout:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_22.png&#34;
+	width=&#34;1208&#34;
+	height=&#34;1088&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_22_hu141b594acbc6625bf6b5b9235bdf9a84_293487_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_22_hu141b594acbc6625bf6b5b9235bdf9a84_293487_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 22&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;266px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Karena GPO ini diaplikasikan ke keseluruhan domain, maka tiap perubahan pada GPO tersbut akan berpengaruh terhadap seluruh computers.
+Pada contoh berikut, kita akan mencoba untuk mengubah &lt;strong&gt;Minimum password length&lt;/strong&gt; menjadi 10 characters.&lt;/p&gt;
+&lt;p&gt;Pertama, right-click pada GPO yang ingin diubah lalu pilih &lt;strong&gt;Edit&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_23.png&#34;
+	width=&#34;1858&#34;
+	height=&#34;1444&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_23_hu1a2cfcafba7a833ba8b3a2022c5b65f7_482364_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_23_hu1a2cfcafba7a833ba8b3a2022c5b65f7_482364_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 23&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;128&#34;
+		data-flex-basis=&#34;308px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Hal ini akan membuka suatu window baru bernama &lt;strong&gt;Group Policy Management Editor&lt;/strong&gt;.
+Selanjutnya pilih &lt;strong&gt;Computer Configurations&lt;/strong&gt; → &lt;strong&gt;Policies&lt;/strong&gt; → &lt;strong&gt;Windows Setting&lt;/strong&gt; →  &lt;strong&gt;Security Settings&lt;/strong&gt; → &lt;strong&gt;Account Policies&lt;/strong&gt; → &lt;strong&gt;Password Policy&lt;/strong&gt; lalu right-click pada &lt;strong&gt;Minimum password length&lt;/strong&gt; dan pilih &lt;strong&gt;Properties&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_24.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_24_hu6266271a189c0fb85b27fb977285c33d_323891_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_24_hu6266271a189c0fb85b27fb977285c33d_323891_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 24&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lalu masukkan panjang password yang sesuai, lalu pilih &lt;strong&gt;Apply&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_25.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_25_hu35ff4428328a052d72938eb8421b3f7e_256376_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_25_hu35ff4428328a052d72938eb8421b3f7e_256376_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 25&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Pilih &lt;strong&gt;OK&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_26.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_26_hu35ff4428328a052d72938eb8421b3f7e_256051_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_26_hu35ff4428328a052d72938eb8421b3f7e_256051_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 26&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Cek kembali policy yang telah diubah:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_27.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_27_hud1f816751bc2ea52d21838d6fa3abaa0_306596_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_27_hud1f816751bc2ea52d21838d6fa3abaa0_306596_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 27&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Untuk memeriksa policy lebih detail, kita bisa melihat keterangan policy pada tab &lt;strong&gt;Explain&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://operacastor.github.io/p/active-directory/GPO_-_28.png&#34;
+	width=&#34;1414&#34;
+	height=&#34;1014&#34;
+	srcset=&#34;https://operacastor.github.io/p/active-directory/GPO_-_28_huf82e3a0337f688b034bb3cddff488b15_323014_480x0_resize_box_3.png 480w, https://operacastor.github.io/p/active-directory/GPO_-_28_huf82e3a0337f688b034bb3cddff488b15_323014_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;GPO - 28&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;139&#34;
+		data-flex-basis=&#34;334px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tryhackme.com/room/winadbasics&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TryHackMe | Active Directory Basics&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

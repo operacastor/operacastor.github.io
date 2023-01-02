@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Operacastor Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>id-id</language>
-        <lastBuildDate>Wed, 23 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 02 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://operacastor.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Pentest</title>
+        <link>https://operacastor.github.io/categories/pentest/</link>
+        <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://operacastor.github.io/categories/pentest/</guid>
+        <description>&lt;img src="https://operacastor.github.io/categories/pentest/pentest-cover.jpg" alt="Featured image of post Pentest" /&gt;</description>
+        </item>
+        <item>
         <title>Tutorial</title>
         <link>https://operacastor.github.io/categories/tutorial/</link>
         <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
